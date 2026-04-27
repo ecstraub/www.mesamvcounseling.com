@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Community Resource Guide | Mesa Mountain View Counseling</title>
+<title>Behavioral Health & Crisis Resource Guide | Mesa Mountain View Counseling</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -23,19 +23,29 @@
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   --border: #e5e7eb;
+  --light-green: #ecfdf5;
   --footer-bg: #334155;
-  --adult: #1e40af;
-  --adult-lt: #eff6ff;
-  --adult-mid: #bfdbfe;
-  --youth: #0d9488;
-  --youth-lt: #f0fdfa;
-  --youth-mid: #99f6e4;
-  --tribal: #92400e;
-  --tribal-lt: #fffbeb;
-  --tribal-mid: #fde68a;
-}
 
-html { scroll-behavior: smooth; }
+  /* Level-of-care colors */
+  --crisis-color: #991b1b;
+  --crisis-lt: #fef2f2;
+  --hospital-color: #1e40af;
+  --hospital-lt: #eff6ff;
+  --iop-color: #0d9488;
+  --iop-lt: #f0fdfa;
+  --outpatient-color: #059669;
+  --outpatient-lt: #ecfdf5;
+  --specialized-color: #7c3aed;
+  --specialized-lt: #f5f3ff;
+  --tribal-color: #92400e;
+  --tribal-lt: #fffbeb;
+  --community-color: #374151;
+  --community-lt: #f9fafb;
+  --transport-color: #0369a1;
+  --transport-lt: #f0f9ff;
+  --housing-color: #065f46;
+  --housing-lt: #ecfdf5;
+}
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -47,14 +57,13 @@ body {
 
 .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
 
-/* FADE IN */
 .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
 
 /* ===== HEADER ===== */
 .top-header {
   background: var(--white);
-  padding: 1rem 1.5rem;
+  padding: 1.5rem 2rem;
   box-shadow: var(--shadow-md);
   position: sticky;
   top: 0;
@@ -65,34 +74,33 @@ body {
   margin: 0 auto;
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 .logo-brand { flex-shrink: 0; }
 .logo-img {
-  height: 70px;
+  height: 80px;
   width: auto;
   transition: transform 0.3s ease;
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.08));
-  display: block;
 }
 .logo-img:hover { transform: scale(1.03); }
 .header-text {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.4rem;
   flex: 1;
   align-items: center;
   text-align: center;
 }
 .mission-line {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--gray-text);
   font-style: italic;
   font-weight: 500;
 }
 .nav-container {
   display: flex;
-  gap: 0.4rem;
+  gap: 0.5rem;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -100,100 +108,26 @@ body {
   color: var(--dark-text);
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.9rem;
-  padding: 0.45rem 0.9rem;
+  font-size: 0.95rem;
+  padding: 0.5rem 1rem;
   border-radius: 8px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  white-space: nowrap;
 }
 .nav-container a:hover { color: var(--primary-teal); background: rgba(13,148,136,0.08); transform: translateY(-1px); }
 .nav-container a.active { color: var(--primary-teal); background: rgba(13,148,136,0.1); }
 
-/* Mobile hamburger */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-  padding: 6px;
-  border-radius: 6px;
-  border: none;
-  background: transparent;
-  margin-left: auto;
-  flex-shrink: 0;
+@media (max-width: 768px) {
+  .header-container { flex-direction: column; text-align: center; gap: 1rem; }
+  .logo-img { height: 60px; }
+  .top-header { padding: 1rem; }
+  .nav-container a { font-size: 0.85rem; padding: 0.4rem 0.75rem; }
 }
-.hamburger span {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: var(--dark-text);
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity: 0; }
-.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-/* Mobile nav drawer */
-.mobile-nav {
-  display: none;
-  position: fixed;
-  top: 0;
-  right: -280px;
-  width: 260px;
-  height: 100dvh;
-  background: var(--white);
-  box-shadow: -4px 0 20px rgba(0,0,0,0.15);
-  z-index: 2000;
-  padding: 5rem 1.5rem 2rem;
-  flex-direction: column;
-  gap: 0.5rem;
-  transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow-y: auto;
-}
-.mobile-nav.open { right: 0; }
-.mobile-nav a {
-  color: var(--dark-text);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 0.75rem 1rem;
-  border-radius: 10px;
-  display: block;
-  transition: all 0.2s;
-}
-.mobile-nav a:hover, .mobile-nav a.active { color: var(--primary-teal); background: rgba(13,148,136,0.08); }
-.mobile-nav-close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: var(--gray-light);
-  border: none;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--dark-text);
-}
-.nav-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.4);
-  z-index: 1999;
-  backdrop-filter: blur(2px);
-}
-.nav-overlay.open { display: block; }
 
 /* ===== HERO ===== */
 .hero {
   background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-teal) 45%, var(--primary-green) 100%);
   color: white;
-  padding: 3.5rem 1.5rem 3rem;
+  padding: 4rem 2rem 3.5rem;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -208,7 +142,7 @@ body {
 @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-15px)} }
 .hero-content { max-width: 800px; margin: 0 auto; position: relative; z-index: 1; }
 .hero-headline {
-  font-size: clamp(1.6rem, 5vw, 3rem);
+  font-size: clamp(1.8rem, 5vw, 3rem);
   font-weight: 800;
   background: linear-gradient(135deg, #ffffff, #ccfbf1);
   -webkit-background-clip: text;
@@ -221,30 +155,30 @@ body {
   animation: fadeInUp 1s ease-out 0.1s forwards;
 }
 .hero-sub {
-  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
   font-weight: 300;
   opacity: 0;
   animation: fadeInUp 1s ease-out 0.3s forwards;
   margin-bottom: 0.5rem;
 }
 .hero-meta {
-  font-size: clamp(0.75rem, 2vw, 0.85rem);
+  font-size: 0.85rem;
   opacity: 0;
   animation: fadeInUp 1s ease-out 0.5s forwards;
-  color: rgba(255,255,255,0.75);
+  color: rgba(255,255,255,0.72);
   margin-top: 0.75rem;
 }
 @keyframes fadeInUp { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
 
-/* ===== INTRO BANNER ===== */
+/* ===== INTRO ===== */
 .intro-bar {
   background: #fffbeb;
   border-left: 4px solid var(--accent-orange);
-  padding: 0.9rem 1.25rem;
+  padding: 1rem 1.5rem;
   max-width: 1100px;
   margin: 1.25rem auto;
   border-radius: 0 8px 8px 0;
-  font-size: 0.875rem;
+  font-size: 0.88rem;
   color: #92400e;
 }
 
@@ -254,7 +188,7 @@ body {
   color: white;
   padding: 1.25rem 1.5rem;
   max-width: 1100px;
-  margin: 0 auto 1.25rem;
+  margin: 0 auto 1.5rem;
   border-radius: 12px;
   box-shadow: var(--shadow-lg);
 }
@@ -262,108 +196,116 @@ body {
   font-size: 0.88rem;
   font-weight: 700;
   margin-bottom: 0.75rem;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 .cgrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(195px, 1fr));
   gap: 0.4rem;
 }
 .ci {
   background: rgba(255,255,255,0.12);
   border-radius: 6px;
-  padding: 0.5rem 0.75rem;
+  padding: 0.45rem 0.75rem;
   transition: background 0.2s;
 }
 .ci:hover { background: rgba(255,255,255,0.2); }
-.cin { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.03em; margin-bottom: 0.1rem; color: rgba(255,255,255,0.85); }
+.cin { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.03em; margin-bottom: 0.1rem; color: rgba(255,255,255,0.82); }
 .civ { font-size: 0.88rem; font-weight: 600; }
+
+@media (max-width: 680px) { .cgrid { grid-template-columns: 1fr 1fr; } }
 
 /* ===== TABLE OF CONTENTS ===== */
 .toc-wrapper {
   max-width: 1100px;
-  margin: 0 auto 1.5rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 1rem;
-  padding: 0 1.5rem;
-}
-.toc-card {
+  margin: 0 auto 1.75rem;
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 1rem 1.1rem;
+  padding: 1.25rem 1.5rem;
   box-shadow: var(--shadow-sm);
 }
-.toc-card h3 {
-  font-size: 0.85rem;
+.toc-wrapper h3 {
+  font-size: 0.78rem;
   font-weight: 700;
-  margin-bottom: 0.7rem;
-  padding-bottom: 0.4rem;
-  border-bottom: 2px solid;
-  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gray-text);
+  margin-bottom: 0.85rem;
 }
-.toc-card.adult h3 { color: var(--adult); border-color: var(--adult); }
-.toc-card.youth h3 { color: var(--youth); border-color: var(--youth); }
-.toc-card.tribal h3 { color: var(--tribal); border-color: var(--tribal); }
-.toc-list { display: flex; flex-direction: column; gap: 0.1rem; }
-.toc-list a {
-  font-size: 0.76rem;
-  font-weight: 600;
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
+.toc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 0.3rem;
+}
+.toc-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 7px;
   text-decoration: none;
-  display: block;
   transition: background 0.15s;
 }
-.toc-card.adult a { color: var(--adult); }
-.toc-card.adult a:hover { background: var(--adult-lt); }
-.toc-card.youth a { color: var(--youth); }
-.toc-card.youth a:hover { background: var(--youth-lt); }
-.toc-card.tribal a { color: var(--tribal); }
-.toc-card.tribal a:hover { background: var(--tribal-lt); }
+.toc-item:hover { background: var(--gray-light); }
+.toc-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.toc-item span {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--dark-text);
+}
+.toc-item small {
+  font-size: 0.73rem;
+  color: var(--gray-text);
+  font-weight: 400;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) { .toc-grid { grid-template-columns: 1fr; } }
 
 /* ===== MAIN ===== */
 main { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem 5rem; }
 
-/* POPULATION DIVIDER */
-.pop-divider {
+/* LEVEL DIVIDER */
+.level-divider {
   display: flex;
   align-items: center;
   gap: 1rem;
   margin: 2.5rem 0 1.25rem;
 }
-.pop-line { flex: 1; height: 2px; border-radius: 2px; min-width: 20px; }
-.pop-divider.adult .pop-line { background: linear-gradient(90deg, var(--adult), var(--primary-teal)); }
-.pop-divider.youth .pop-line { background: linear-gradient(90deg, var(--youth), #34d399); }
-.pop-divider.tribal .pop-line { background: linear-gradient(90deg, var(--tribal), #d97706); }
-.pop-badge {
-  padding: 0.5rem 1.25rem;
+.level-line { flex: 1; height: 2px; border-radius: 2px; }
+.level-badge {
+  padding: 0.5rem 1.5rem;
   border-radius: 50px;
   font-weight: 700;
-  font-size: clamp(0.8rem, 2.5vw, 0.95rem);
+  font-size: 0.9rem;
   white-space: nowrap;
   letter-spacing: 0.02em;
-  text-align: center;
+  color: white;
+  box-shadow: var(--shadow-md);
 }
-.pop-divider.adult .pop-badge { background: linear-gradient(135deg, var(--primary-blue), var(--primary-teal)); color: white; box-shadow: var(--shadow-md); }
-.pop-divider.youth .pop-badge { background: linear-gradient(135deg, var(--primary-teal), var(--primary-green)); color: white; box-shadow: var(--shadow-md); }
-.pop-divider.tribal .pop-badge { background: linear-gradient(135deg, #92400e, #d97706); color: white; box-shadow: var(--shadow-md); }
 
 /* SECTION */
-.sec { margin-bottom: 1.75rem; scroll-margin-top: 90px; }
+.sec { margin-bottom: 1.5rem; scroll-margin-top: 85px; }
 .sec-header {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.7rem 1.1rem;
+  padding: 0.7rem 1.25rem;
   border-radius: 10px 10px 0 0;
 }
-.sec-header h2 { font-size: 0.95rem; color: white; font-weight: 700; letter-spacing: 0.01em; }
-.adult-hdr { background: linear-gradient(135deg, var(--primary-blue), #3b82f6); }
-.youth-hdr { background: linear-gradient(135deg, var(--primary-teal), #34d399); }
-.tribal-hdr { background: linear-gradient(135deg, #92400e, #d97706); }
+.sec-header .sec-note {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.88);
+  font-weight: 500;
+  font-style: italic;
+}
 .sec-body {
   background: var(--white);
   border: 1px solid var(--border);
@@ -377,7 +319,7 @@ main { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem 5rem; }
 .subsec { margin-bottom: 1rem; }
 .subsec:last-child { margin-bottom: 0; }
 .subsec-label {
-  font-size: 0.67rem;
+  font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -385,75 +327,66 @@ main { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem 5rem; }
   border-bottom: 1px solid var(--border);
   margin-bottom: 0.6rem;
 }
-.adult-label { color: var(--primary-teal); }
-.youth-label { color: var(--youth); }
-.tribal-label { color: var(--tribal); }
+.subsec-note {
+  font-size: 0.78rem;
+  color: var(--gray-text);
+  margin-bottom: 0.6rem;
+  font-style: italic;
+}
 
-/* RESOURCE GRID */
-.rg {
+/* RESOURCE LIST (simple rows, not cards) */
+.rl { display: flex; flex-direction: column; gap: 0.5rem; }
+.ri {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 0.65rem;
-}
-.rc {
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  gap: 0.5rem 1.25rem;
+  padding: 0.75rem 1rem;
   border-radius: 8px;
-  padding: 0.85rem 1rem;
   border: 1px solid var(--border);
-  transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+  transition: box-shadow 0.2s, transform 0.2s;
 }
-.rc:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
-.adult-rc { background: var(--adult-lt); }
-.adult-rc:hover { border-color: #93c5fd; }
-.youth-rc { background: var(--youth-lt); }
-.youth-rc:hover { border-color: #5eead4; }
-.tribal-rc { background: var(--tribal-lt); }
-.tribal-rc:hover { border-color: #fbbf24; }
-.rn { font-weight: 700; font-size: 0.875rem; margin-bottom: 0.2rem; }
-.adult-rc .rn { color: var(--primary-blue); }
-.youth-rc .rn { color: #0f766e; }
-.tribal-rc .rn { color: var(--tribal); }
-.rd { font-size: 0.78rem; color: #4b5563; margin-bottom: 0.4rem; line-height: 1.45; }
-.rco { font-size: 0.77rem; font-weight: 600; color: #374151; line-height: 1.65; }
+.ri:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+.ri-left { display: flex; flex-direction: column; gap: 0.15rem; }
+.ri-name { font-weight: 700; font-size: 0.9rem; }
+.ri-desc { font-size: 0.78rem; color: #4b5563; line-height: 1.45; }
+.ri-contact { font-size: 0.77rem; font-weight: 600; color: #374151; text-align: right; white-space: nowrap; }
 
-/* CNOTE */
-.cnote {
+/* Color themes per level */
+.crisis-ri { background: var(--crisis-lt); }
+.crisis-ri .ri-name { color: var(--crisis-color); }
+.hospital-ri { background: var(--hospital-lt); }
+.hospital-ri .ri-name { color: var(--hospital-color); }
+.iop-ri { background: var(--iop-lt); }
+.iop-ri .ri-name { color: var(--iop-color); }
+.outpatient-ri { background: var(--outpatient-lt); }
+.outpatient-ri .ri-name { color: #065f46; }
+.specialized-ri { background: var(--specialized-lt); }
+.specialized-ri .ri-name { color: var(--specialized-color); }
+.tribal-ri { background: var(--tribal-lt); }
+.tribal-ri .ri-name { color: var(--tribal-color); }
+.community-ri { background: var(--community-lt); }
+.community-ri .ri-name { color: var(--community-color); }
+.transport-ri { background: var(--transport-lt); }
+.transport-ri .ri-name { color: var(--transport-color); }
+.housing-ri { background: var(--housing-lt); }
+.housing-ri .ri-name { color: var(--housing-color); }
+
+/* Alert note box */
+.alert-note {
   background: #fffbeb;
   border: 1px solid #fde68a;
-  border-radius: 6px;
-  padding: 0.6rem 0.9rem;
-  font-size: 0.78rem;
+  border-left: 4px solid #f59e0b;
+  border-radius: 0 6px 6px 0;
+  padding: 0.65rem 1rem;
+  font-size: 0.8rem;
   color: #92400e;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
 }
-
-/* Back to top button */
-.back-to-top {
-  position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
-  background: var(--primary-teal);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 44px;
-  height: 44px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  box-shadow: var(--shadow-lg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.3s ease;
-  z-index: 900;
-  text-decoration: none;
-}
-.back-to-top.visible { opacity: 1; transform: translateY(0); }
-.back-to-top:hover { background: var(--primary-blue); transform: translateY(-2px); }
 
 /* ===== FOOTER ===== */
-footer { background: var(--footer-bg); color: white; padding: 2rem 0 1rem; font-size: 0.875rem; }
+footer { background: var(--footer-bg); color: white; padding: 2rem 0 1rem; font-size: 0.88rem; }
 .footer-container {
   max-width: 1100px;
   margin: 0 auto;
@@ -465,748 +398,792 @@ footer { background: var(--footer-bg); color: white; padding: 2rem 0 1rem; font-
   padding: 0 1.5rem;
 }
 .footer-left { display: flex; align-items: center; gap: 1.5rem; }
-.footer-logo { height: 60px; }
+.footer-logo { height: 65px; }
 .footer-address { font-size: 0.85rem; line-height: 1.7; color: rgba(255,255,255,0.8); }
 .footer-address a { color: var(--primary-teal); text-decoration: none; font-weight: 600; }
 .footer-address a:hover { text-decoration: underline; }
-.footer-links { display: flex; gap: 1.25rem; flex-wrap: wrap; }
-.footer-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-weight: 500; font-size: 0.875rem; transition: color 0.3s; }
+.footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.footer-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: color 0.3s; }
 .footer-links a:hover { color: white; }
-.footer-bottom { text-align: center; padding-top: 1rem; margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); font-size: 0.75rem; }
+.footer-bottom { text-align: center; padding-top: 1rem; margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); font-size: 0.78rem; }
 
-/* ========================================
-   RESPONSIVE BREAKPOINTS
-   ======================================== */
-
-/* Tablet (768px–1024px) */
-@media (max-width: 1024px) {
-  .rg { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
-  .toc-wrapper { grid-template-columns: 1fr 1fr; padding: 0 1.5rem; }
-  .toc-card.tribal { grid-column: span 2; }
-}
-
-/* Mobile (max 768px) */
 @media (max-width: 768px) {
-  /* Header */
-  .header-text .mission-line { display: none; }
-  .header-container { gap: 0.75rem; }
-  .logo-img { height: 52px; }
-  .top-header { padding: 0.75rem 1rem; }
-
-  /* Show hamburger, hide desktop nav */
-  .hamburger { display: flex; }
-  .header-text .nav-container { display: none; }
-  .mobile-nav { display: flex; }
-
-  /* Hero */
-  .hero { padding: 2.5rem 1rem 2rem; }
-  .hero-meta { display: flex; flex-direction: column; gap: 0.25rem; }
-
-  /* Intro/Crisis */
-  .intro-bar { margin: 1rem; border-radius: 8px; border-left-width: 3px; }
-  .crisis-box { margin: 0 1rem 1rem; border-radius: 10px; }
-  .cgrid { grid-template-columns: 1fr 1fr; }
-
-  /* TOC */
-  .toc-wrapper { grid-template-columns: 1fr; padding: 0 1rem; }
-  .toc-card.tribal { grid-column: span 1; }
-
-  /* Main */
-  main { padding: 0 1rem 4rem; }
-
-  /* Resource grid — single column on small screens */
-  .rg { grid-template-columns: 1fr; }
-
-  /* Pop divider */
-  .pop-badge { font-size: 0.8rem; padding: 0.45rem 1rem; }
-
-  /* Back to top */
-  .back-to-top { bottom: 1rem; right: 1rem; width: 40px; height: 40px; font-size: 1rem; }
-
-  /* Footer */
   .footer-container { flex-direction: column; text-align: center; }
-  .footer-left { flex-direction: column; gap: 0.75rem; }
+  .footer-left { flex-direction: column; gap: 1rem; }
   .footer-links { justify-content: center; }
-}
-
-/* Small phones (max 400px) */
-@media (max-width: 400px) {
-  .cgrid { grid-template-columns: 1fr; }
-  .pop-badge { white-space: normal; text-align: center; font-size: 0.78rem; }
-  .sec-header h2 { font-size: 0.88rem; }
+  .ri { grid-template-columns: 1fr; }
+  .ri-contact { text-align: left; }
 }
 </style>
 </head>
 <body>
 
-<!-- NAV OVERLAY -->
-<div class="nav-overlay" id="navOverlay" onclick="closeNav()"></div>
-
-<!-- MOBILE NAV DRAWER -->
-<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
-  <button class="mobile-nav-close" onclick="closeNav()" aria-label="Close menu">✕</button>
-  <a href="https://www.mesamvcounseling.com">Home</a>
-  <a href="https://www.mesamvcounseling.com#services">Services</a>
-  <a href="https://www.mesamvcounseling.com#about">About</a>
-  <a href="https://www.mesamvcounseling.com#contact">Contact</a>
-  <a href="#" class="active">Resources</a>
-  <hr style="border-color: #e5e7eb; margin: 0.5rem 0;">
-  <p style="font-size: 0.75rem; color: var(--gray-text); padding: 0 0.5rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em;">Jump to Section</p>
-  <a href="#a-bh" onclick="closeNav()">Adult — Behavioral Health</a>
-  <a href="#a-housing" onclick="closeNav()">Adult — Housing</a>
-  <a href="#a-substance" onclick="closeNav()">Adult — Substance Abuse</a>
-  <a href="#c-bh" onclick="closeNav()">Youth — Behavioral Health</a>
-  <a href="#c-hospital" onclick="closeNav()">Youth — Inpatient</a>
-  <a href="#t-bh" onclick="closeNav()">Native American — BH</a>
-</nav>
-
 <!-- HEADER -->
-<header class="top-header fade-in">
+<div class="top-header fade-in">
   <div class="header-container">
     <div class="logo-brand">
       <img src="https://i.imgur.com/TElZDb0.png" alt="Mountain View Counseling and Therapy" class="logo-img">
     </div>
     <div class="header-text">
       <p class="mission-line">Compassionate care. Lasting change.</p>
-      <nav class="nav-container" aria-label="Main navigation">
+      <div class="nav-container">
         <a href="https://www.mesamvcounseling.com">Home</a>
         <a href="https://www.mesamvcounseling.com#services">Services</a>
         <a href="https://www.mesamvcounseling.com#about">About</a>
         <a href="https://www.mesamvcounseling.com#contact">Contact</a>
         <a href="#" class="active">Resources</a>
-      </nav>
+      </div>
     </div>
-    <!-- Hamburger (mobile only) -->
-    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
   </div>
-</header>
+</div>
 
 <!-- HERO -->
 <div class="hero">
   <div class="hero-content">
-    <h1 class="hero-headline">Community Resource Guide</h1>
+    <h1 class="hero-headline">Behavioral Health &amp; Crisis Support Resources</h1>
     <p class="hero-sub">Mesa Mountain View Counseling &amp; Therapy</p>
-    <p class="hero-meta">
-      <span>Maricopa County, Arizona</span>
-      <span style="opacity:0.5; margin: 0 0.4rem;">|</span>
-      <span>Updated April 2026</span>
-      <span style="opacity:0.5; margin: 0 0.4rem;">|</span>
-      <span>Available in print upon request</span>
-    </p>
+    <p class="hero-meta">Maricopa County, Arizona &nbsp;|&nbsp; Updated April 2026 &nbsp;|&nbsp; Available in print upon request</p>
   </div>
 </div>
 
 <!-- INTRO -->
 <div class="intro-bar fade-in">
-  <strong>About this guide:</strong> Resources are organized by population and topic across three sections: Adults (18–65), Youth (8–17), and Native American &amp; Tribal. Contact information is provided for direct outreach. If you need help connecting to any service, speak with your provider.
+  <strong>About this guide:</strong> Resources are organized by level of care to help individuals and families find the most appropriate support based on safety, need, and intensity of services. If you need help connecting to any resource, speak with your provider.
 </div>
 
 <!-- CRISIS BOX -->
 <div class="crisis-box fade-in">
-  <h2>Crisis &amp; Emergency Lines — Available 24/7 (All Ages)</h2>
+  <h2>Immediate Help — 24/7 Crisis Lines</h2>
   <div class="cgrid">
     <div class="ci"><div class="cin">988 Suicide &amp; Crisis Lifeline</div><div class="civ">Call or Text 988</div></div>
     <div class="ci"><div class="cin">Maricopa Crisis Line</div><div class="civ">602-222-9444</div></div>
-    <div class="ci"><div class="cin">AZ Complete Health Crisis</div><div class="civ">480-784-1500</div></div>
-    <div class="ci"><div class="cin">Crisis Text Line</div><div class="civ">Text HOME to 741741</div></div>
-    <div class="ci"><div class="cin">Teen Lifeline (Youth)</div><div class="civ">602-248-8336</div></div>
+    <div class="ci"><div class="cin">Teen Lifeline</div><div class="civ">602-248-8336</div></div>
     <div class="ci"><div class="cin">Trevor Project (LGBTQ+ Youth)</div><div class="civ">866-488-7386</div></div>
     <div class="ci"><div class="cin">Veterans Crisis Line</div><div class="civ">800-273-8255 Press 1</div></div>
-    <div class="ci"><div class="cin">Gila River Tribal Crisis</div><div class="civ">800-259-3449</div></div>
     <div class="ci"><div class="cin">Domestic Violence Hotline</div><div class="civ">800-782-6400</div></div>
-    <div class="ci"><div class="cin">Human Trafficking Hotline</div><div class="civ">888-373-7888</div></div>
-    <div class="ci"><div class="cin">Native Crisis Text Line</div><div class="civ">Text NATIVE to 741741</div></div>
-    <div class="ci"><div class="cin">Medical / Fire / Police</div><div class="civ">911</div></div>
+    <div class="ci"><div class="cin">Crisis Text Line</div><div class="civ">Text HOME to 741741</div></div>
+    <div class="ci"><div class="cin">Emergency Services</div><div class="civ">911</div></div>
   </div>
 </div>
 
 <!-- TABLE OF CONTENTS -->
 <div class="toc-wrapper fade-in">
-  <div class="toc-card adult">
-    <h3>Adult Resources (Ages 18–65)</h3>
-    <div class="toc-list">
-      <a href="#a-bh">Behavioral Health — Outpatient</a>
-      <a href="#a-financial">Financial &amp; Employment</a>
-      <a href="#a-food">Food &amp; Basic Needs</a>
-      <a href="#a-grief">Grief &amp; Loss</a>
-      <a href="#a-hospital">Inpatient / Hospital</a>
-      <a href="#a-iop">IOP / PHP Programs</a>
-      <a href="#a-legal">Legal Aid</a>
-      <a href="#a-lgbtq">LGBTQ+</a>
-      <a href="#a-medical">Medical &amp; Dental</a>
-      <a href="#a-housing">Housing &amp; Shelter</a>
-      <a href="#a-safety">Domestic Violence</a>
-      <a href="#a-substance">Substance Abuse</a>
-      <a href="#a-transport">Transportation</a>
-      <a href="#a-veterans">Veterans</a>
-    </div>
-  </div>
-  <div class="toc-card youth">
-    <h3>Youth Resources (Ages 8–17)</h3>
-    <div class="toc-list">
-      <a href="#c-adhd">ADHD &amp; Autism</a>
-      <a href="#c-bh">Behavioral Health — Outpatient</a>
-      <a href="#c-eating">Eating Disorders</a>
-      <a href="#c-family">Family &amp; Parent Support</a>
-      <a href="#c-grief">Grief</a>
-      <a href="#c-housing">Housing</a>
-      <a href="#c-hospital">Inpatient / Hospital</a>
-      <a href="#c-iop">IOP &amp; Step-Down</a>
-      <a href="#c-lgbtq">LGBTQ+</a>
-      <a href="#c-safety">Abuse &amp; Safety</a>
-      <a href="#c-selfharm">Self-Injury</a>
-      <a href="#c-substance">Substance Abuse</a>
-    </div>
-  </div>
-  <div class="toc-card tribal">
-    <h3>Native American &amp; Tribal</h3>
-    <div class="toc-list">
-      <a href="#t-bh">Behavioral Health</a>
-      <a href="#t-housing">Housing</a>
-      <a href="#t-legal">Legal &amp; Advocacy</a>
-      <a href="#t-medical">Medical</a>
-      <a href="#t-substance">Substance Abuse</a>
-    </div>
+  <h3>Sections in This Guide</h3>
+  <div class="toc-grid">
+    <a class="toc-item" href="#higher-care">
+      <div class="toc-dot" style="background: var(--hospital-color);"></div>
+      <span>Higher Level Care</span>
+      <small>Hospital &amp; Crisis Stabilization</small>
+    </a>
+    <a class="toc-item" href="#iop">
+      <div class="toc-dot" style="background: var(--iop-color);"></div>
+      <span>Intensive Treatment</span>
+      <small>IOP / PHP Programs</small>
+    </a>
+    <a class="toc-item" href="#outpatient">
+      <div class="toc-dot" style="background: var(--outpatient-color);"></div>
+      <span>Outpatient Therapy &amp; Counseling</span>
+      <small>Ongoing treatment &amp; medication support</small>
+    </a>
+    <a class="toc-item" href="#specialized">
+      <div class="toc-dot" style="background: var(--specialized-color);"></div>
+      <span>Specialized Services</span>
+      <small>Trauma, eating disorders, autism</small>
+    </a>
+    <a class="toc-item" href="#tribal">
+      <div class="toc-dot" style="background: var(--tribal-color);"></div>
+      <span>Tribal &amp; Native American</span>
+      <small>Culturally responsive services</small>
+    </a>
+    <a class="toc-item" href="#community">
+      <div class="toc-dot" style="background: var(--community-color);"></div>
+      <span>Community &amp; Recovery Support</span>
+      <small>Peer support &amp; mutual aid</small>
+    </a>
+    <a class="toc-item" href="#transport">
+      <div class="toc-dot" style="background: var(--transport-color);"></div>
+      <span>Transportation</span>
+      <small>AHCCCS NEMT &amp; community transit</small>
+    </a>
+    <a class="toc-item" href="#housing">
+      <div class="toc-dot" style="background: var(--housing-color);"></div>
+      <span>Housing &amp; Stabilization</span>
+      <small>Emergency shelter &amp; recovery-linked housing</small>
+    </a>
   </div>
 </div>
 
 <!-- ===================== MAIN ===================== -->
 <main>
 
-<!-- ===== ADULT ===== -->
-<div class="pop-divider adult fade-in"><div class="pop-line"></div><div class="pop-badge">Adult Resources (Ages 18–65)</div><div class="pop-line"></div></div>
+<!-- HIGHER LEVEL CARE -->
+<div class="level-divider fade-in">
+  <div class="level-line" style="background: linear-gradient(90deg, var(--hospital-color), var(--primary-teal));"></div>
+  <div class="level-badge" style="background: linear-gradient(135deg, var(--hospital-color), #3b82f6);">Higher Level Care</div>
+  <div class="level-line" style="background: linear-gradient(90deg, var(--primary-teal), var(--hospital-color));"></div>
+</div>
 
-<div class="sec fade-in" id="a-bh">
-  <div class="sec-header adult-hdr"><h2>Behavioral Health — Outpatient</h2></div>
+<div class="sec fade-in" id="higher-care">
+  <div class="sec-header" style="background: linear-gradient(135deg, var(--hospital-color), #3b82f6);">
+    <span class="sec-note">For urgent psychiatric care, detox, or stabilization needs</span>
+  </div>
   <div class="sec-body">
+
     <div class="subsec">
-      <div class="subsec-label adult-label">AHCCCS / Low Cost</div>
-      <div class="rg">
-        <div class="rc adult-rc"><div class="rn">211 Arizona</div><div class="rd">General resource referral for housing, food, mental health, transportation, and more.</div><div class="rco">Phone: 2-1-1 or 602-263-8856</div></div>
-        <div class="rc adult-rc"><div class="rn">ASU Counselor Training Center</div><div class="rd">Low-cost counseling with supervised graduate students (~$80/semester). In-person and telehealth.</div><div class="rco">cisa.asu.edu/graduate/ccp/ctc</div></div>
-        <div class="rc adult-rc"><div class="rn">Catholic Social Services</div><div class="rd">Counseling and basic needs assistance. Multiple locations.</div><div class="rco">Phone: 602-285-1999 or 602-997-6105</div></div>
-        <div class="rc adult-rc"><div class="rn">Family Service Agency</div><div class="rd">Counseling and medication management. Sliding scale available.</div><div class="rco">Phone: 602-264-9891</div></div>
-        <div class="rc adult-rc"><div class="rn">Jewish Family &amp; Children's Services</div><div class="rd">Counseling and mental health services, open to all faiths.</div><div class="rco">Phone: 602-256-0528</div></div>
-        <div class="rc adult-rc"><div class="rn">La Frontera Empact</div><div class="rd">Outpatient counseling and crisis services across Maricopa and Pinal counties.</div><div class="rco">Phone: 480-784-1514</div></div>
-        <div class="rc adult-rc"><div class="rn">Lifewell</div><div class="rd">Outpatient mental health services. Multiple locations.</div><div class="rco">Phone: 602-808-2822</div></div>
-        <div class="rc adult-rc"><div class="rn">Northern Arizona University Clinic</div><div class="rd">Free counseling with supervised graduate students. In-person or online.</div><div class="rco">Phone: 928-523-7135 | EPSpracticumclinic@nau.edu</div></div>
-        <div class="rc adult-rc"><div class="rn">People Empowering People (PEP-AZ)</div><div class="rd">Adults and children. AHCCCS. Office or in-home services. Apache Junction.</div><div class="rco">Phone: 480-808-2301</div></div>
-        <div class="rc adult-rc"><div class="rn">Resilient Health</div><div class="rd">Outpatient behavioral health. First Episode Psychosis program available.</div><div class="rco">Phone: 877-779-2470</div></div>
-        <div class="rc adult-rc"><div class="rn">Southwest Behavioral Health</div><div class="rd">Outpatient mental health and substance abuse services.</div><div class="rco">Phone: 480-947-6353</div></div>
-        <div class="rc adult-rc"><div class="rn">Terros Health</div><div class="rd">Outpatient behavioral health and substance abuse. Multiple locations.</div><div class="rco">Phone: 602-685-6000</div></div>
-        <div class="rc adult-rc"><div class="rn">The Hope Institute</div><div class="rd">Specialized outpatient care for chronic suicidal ideation. Gilbert.</div><div class="rco">Phone: 480-770-1773</div></div>
-        <div class="rc adult-rc"><div class="rn">Valle del Sol</div><div class="rd">Mental health and substance abuse. Bilingual services. 9 locations.</div><div class="rco">Phone: 602-258-6797</div></div>
-        <div class="rc adult-rc"><div class="rn">Valleywise Behavioral Health</div><div class="rd">Sliding scale counseling and medication management. Mesa.</div><div class="rco">Phone: 480-344-2020 | 570 W. Brown Rd., Mesa</div></div>
+      <div class="subsec-label" style="color: var(--hospital-color);">Inpatient Psychiatric</div>
+      <div class="rl">
+        <div class="ri hospital-ri">
+          <div class="ri-left">
+            <div class="ri-name">Aurora Behavioral Health System</div>
+            <div class="ri-desc">Inpatient psychiatric and detox. East campus (Tempe) and West campus (Glendale). Intake line varies by campus — use system-wide line for routing.</div>
+          </div>
+          <div class="ri-contact">480-345-5420<br><span style="font-weight:400;font-size:0.73rem;">System-wide intake</span></div>
+        </div>
+        <div class="ri hospital-ri">
+          <div class="ri-left">
+            <div class="ri-name">Banner Behavioral Health Hospital</div>
+            <div class="ri-desc">Inpatient psychiatric care. Scottsdale campus.</div>
+          </div>
+          <div class="ri-contact">480-448-7500</div>
+        </div>
+        <div class="ri hospital-ri">
+          <div class="ri-left">
+            <div class="ri-name">Copper Springs</div>
+            <div class="ri-desc">Inpatient psychiatric. East campus (Gilbert) and Avondale campus.</div>
+          </div>
+          <div class="ri-contact">East: 480-667-5500<br>Avondale: 480-565-3035</div>
+        </div>
+        <div class="ri hospital-ri">
+          <div class="ri-left">
+            <div class="ri-name">Oasis Behavioral Health</div>
+            <div class="ri-desc">Inpatient psychiatric. AHCCCS accepted. Gilbert.</div>
+          </div>
+          <div class="ri-contact">800-844-6435</div>
+        </div>
+        <div class="ri hospital-ri">
+          <div class="ri-left">
+            <div class="ri-name">Valley Hospital Behavioral Health</div>
+            <div class="ri-desc">Inpatient psychiatric hospital. Step-down services (PHP/IOP) may be available — availability varies by contract period. Phoenix.</div>
+          </div>
+          <div class="ri-contact">602-952-3939</div>
+        </div>
       </div>
     </div>
+
     <div class="subsec">
-      <div class="subsec-label adult-label">Free Walk-In Psychiatric Clinics</div>
-      <div class="cnote">Note: These clinics do not prescribe controlled medications.</div>
-      <div class="rg">
-        <div class="rc adult-rc"><div class="rn">CBI West Valley Access Point</div><div class="rd">Bridge prescriptions, 23-hour observation, short-term residential. Avondale.</div><div class="rco">Phone: 877-931-9142 | 824 N 99th Ave., Avondale</div></div>
-        <div class="rc adult-rc"><div class="rn">ConnectionsAZ / UPC</div><div class="rd">Walk-in psychiatric care. Mon–Sun 7am–9pm. Phoenix.</div><div class="rco">Phone: 602-416-7600 | 1201 S. 7th Ave., Ste 150, Phoenix</div></div>
-        <div class="rc adult-rc"><div class="rn">CPEC (Community Psychiatric Emergency Center)</div><div class="rd">Bridge prescriptions, 23-hour observation, substance abuse programs. M–F 8a–7p. Mesa.</div><div class="rco">Phone: 877-931-9142 | 358 E. Javelina, Mesa</div></div>
-        <div class="rc adult-rc"><div class="rn">Mind 24-7</div><div class="rd">23-hour observation, walk-in. Ages 3+. Mesa, Phoenix North-Central, and Phoenix Camelback.</div><div class="rco">Phone: 844-646-3247</div></div>
+      <div class="subsec-label" style="color: var(--hospital-color);">Walk-In Crisis Stabilization</div>
+      <div class="rl">
+        <div class="ri hospital-ri">
+          <div class="ri-left">
+            <div class="ri-name">Mind 24-7</div>
+            <div class="ri-desc">Walk-in crisis stabilization, 24/7. 23-hour observation. Ages 3+. Four locations: Mesa (Higley), Phoenix North-Central, Phoenix Camelback, and Phoenix Central (2728 N. 24th St.).</div>
+          </div>
+          <div class="ri-contact">844-646-3247</div>
+        </div>
+        <div class="ri hospital-ri">
+          <div class="ri-left">
+            <div class="ri-name">ConnectionsAZ — Urgent Psychiatric Care (UPC)</div>
+            <div class="ri-desc">Urgent Psychiatric Care (UPC) clinic model operated by ConnectionsAZ. Daily walk-in psychiatric services; hours may vary (typically extended daytime and evening). Bridge prescriptions and short-term observation. Phoenix.</div>
+          </div>
+          <div class="ri-contact">602-416-7600</div>
+        </div>
       </div>
     </div>
+
     <div class="subsec">
-      <div class="subsec-label adult-label">Referrals &amp; Advocacy</div>
-      <div class="rg">
-        <div class="rc adult-rc"><div class="rn">AHCCCS Application</div><div class="rd">Apply for health coverage if uninsured or underinsured.</div><div class="rco">Phone: 602-417-4000 | healthearizonaplus.gov</div></div>
-        <div class="rc adult-rc"><div class="rn">Mental Health America of Arizona</div><div class="rd">Advocacy, resources, and referrals for mental health services statewide.</div><div class="rco">Phone: 480-997-4407 | mhaarizona.org</div></div>
-        <div class="rc adult-rc"><div class="rn">NAMI Valley of the Sun</div><div class="rd">Free support groups, education classes (Family-to-Family, Peer-to-Peer), and advocacy.</div><div class="rco">Phone: 602-244-8166 | namivalleyofthesun.org</div></div>
-        <div class="rc adult-rc"><div class="rn">Statewide MH Resource Website</div><div class="rd">Search by issue, provider, or county across Arizona.</div><div class="rco">mentalhealthresources.org</div></div>
+      <div class="subsec-label" style="color: var(--hospital-color);">Sub-Acute / Crisis Stabilization Centers</div>
+      <div class="alert-note">The following three programs operate under the same access line (877-931-9142) but serve distinct functions. CBI West and CPEC are sub-acute stabilization sites; RI International provides peer-supported crisis services including transport-to-treatment.</div>
+      <div class="rl">
+        <div class="ri hospital-ri">
+          <div class="ri-left">
+            <div class="ri-name">CBI West Valley Access Point</div>
+            <div class="ri-desc">Sub-acute and 23-hour observation for psychiatric, dual diagnosis, and detox. Bridge prescriptions available. Avondale. Same operator and access line as CPEC.</div>
+          </div>
+          <div class="ri-contact">877-931-9142</div>
+        </div>
+        <div class="ri hospital-ri">
+          <div class="ri-left">
+            <div class="ri-name">CPEC (Community Psychiatric Emergency Center)</div>
+            <div class="ri-desc">Sub-acute stabilization, bridge prescriptions, and 23-hour observation. Mesa. Same operator and access line as CBI West.</div>
+          </div>
+          <div class="ri-contact">877-931-9142</div>
+        </div>
+        <div class="ri hospital-ri">
+          <div class="ri-left">
+            <div class="ri-name">RI International (formerly Recovery Innovations)</div>
+            <div class="ri-desc">Crisis system operator providing sub-acute stabilization, peer-supported crisis services, mobile crisis response, crisis receiving, and housing transition support. Includes the T3 Transport-to-Treatment program — voluntary transport from hospitals or community settings directly into care. Still referenced as Recovery Innovations in some AHCCCS directories. Maricopa County.</div>
+          </div>
+          <div class="ri-contact">602-636-4605<br><span style="font-weight:400;font-size:0.73rem;">T3 Intake: 602-636-4352</span></div>
+        </div>
       </div>
     </div>
+
   </div>
 </div>
 
-<div class="sec fade-in" id="a-financial">
-  <div class="sec-header adult-hdr"><h2>Financial &amp; Employment</h2></div>
-  <div class="sec-body">
-    <div class="rg">
-      <div class="rc adult-rc"><div class="rn">ADEQ Vehicle Repair Program</div><div class="rd">Financial assistance after a failed emissions test. Up to $550 gas / $1,000 diesel.</div><div class="rco">azdeq.gov/CarHelp</div></div>
-      <div class="rc adult-rc"><div class="rn">AZ Department of Economic Security</div><div class="rd">Unemployment insurance, job training, SNAP, and benefits assistance.</div><div class="rco">Phone: 602-542-4910 | azdes.gov</div></div>
-      <div class="rc adult-rc"><div class="rn">Prescription Assistance</div><div class="rd">Help paying for medications. Multiple programs available.</div><div class="rco">Meds for Low Income: 800-762-4636 | needymeds.com | rxassist.org</div></div>
-      <div class="rc adult-rc"><div class="rn">St. Joseph the Worker</div><div class="rd">Employment assistance and job placement. Phoenix.</div><div class="rco">Phone: 602-417-9854 | 1125 W. Jackson St., Phoenix</div></div>
-      <div class="rc adult-rc"><div class="rn">Take Charge America</div><div class="rd">Nonprofit financial counseling and debt management. Phoenix.</div><div class="rco">Phone: 623-266-6100</div></div>
-    </div>
-  </div>
+
+<!-- IOP / PHP -->
+<div class="level-divider fade-in">
+  <div class="level-line" style="background: linear-gradient(90deg, var(--iop-color), #34d399);"></div>
+  <div class="level-badge" style="background: linear-gradient(135deg, var(--iop-color), #34d399);">Intensive Treatment</div>
+  <div class="level-line" style="background: linear-gradient(90deg, #34d399, var(--iop-color));"></div>
 </div>
 
-<div class="sec fade-in" id="a-food">
-  <div class="sec-header adult-hdr"><h2>Food &amp; Basic Needs</h2></div>
-  <div class="sec-body">
-    <div class="rg">
-      <div class="rc adult-rc"><div class="rn">Andre House</div><div class="rd">Meals for individuals experiencing poverty and homelessness. Phoenix.</div><div class="rco">Phone: 602-255-0580 | 213 S. 11th Ave., Phoenix</div></div>
-      <div class="rc adult-rc"><div class="rn">Community Action Programs</div><div class="rd">Bill pay assistance, food, and emergency services by city.</div><div class="rco">Chandler: 480-963-4321 | Tempe: 480-350-5880 | Glendale: 623-930-2854</div></div>
-      <div class="rc adult-rc"><div class="rn">First Food Bank</div><div class="rd">Food delivery for qualifying households. Maricopa, Pinal, and Yavapai counties.</div><div class="rco">Phone: 602-344-4142 | firstfoodbank.org/gethelp</div></div>
-      <div class="rc adult-rc"><div class="rn">Paz de Cristo</div><div class="rd">Free meals and food boxes. Mesa.</div><div class="rco">Phone: 480-464-2370 | 424 W. Broadway Rd., Mesa</div></div>
-      <div class="rc adult-rc"><div class="rn">Salvation Army</div><div class="rd">Food boxes, meals, stranded traveler assistance, and heat relief stations.</div><div class="rco">Mesa: 480-962-9013 | Phoenix: 602-267-4195</div></div>
-      <div class="rc adult-rc"><div class="rn">St. Mary's Food Bank</div><div class="rd">Food bank, employment training, and SNAP assistance. Multiple locations.</div><div class="rco">Phone: 602-242-3663</div></div>
-      <div class="rc adult-rc"><div class="rn">St. Vincent de Paul</div><div class="rd">Food, dining room, clothing, and bus tickets. Phoenix.</div><div class="rco">Phone: 602-850-6777 | 420 W. Watkins Rd., Phoenix</div></div>
-      <div class="rc adult-rc"><div class="rn">WIC (Women, Infants &amp; Children)</div><div class="rd">Nutrition support for pregnant and postpartum women and children. Multiple locations.</div><div class="rco">Phone: 1-800-252-5942 | azdhs.gov/prevention/azwic</div></div>
-    </div>
+<div class="sec fade-in" id="iop">
+  <div class="sec-header" style="background: linear-gradient(135deg, var(--iop-color), #34d399);">
+    <span class="sec-note">For structured treatment beyond weekly outpatient therapy</span>
   </div>
-</div>
-
-<div class="sec fade-in" id="a-grief">
-  <div class="sec-header adult-hdr"><h2>Grief &amp; Loss</h2></div>
   <div class="sec-body">
-    <div class="rg">
-      <div class="rc adult-rc"><div class="rn">Banner Grief Recovery Programs</div><div class="rd">Grief support groups at multiple Banner locations.</div><div class="rco">Phone: 480-657-1167</div></div>
-      <div class="rc adult-rc"><div class="rn">Compassionate Friends</div><div class="rd">Support for parents who have lost a child.</div><div class="rco">Phone: 877-969-0010 | compassionatefriends.org</div></div>
-      <div class="rc adult-rc"><div class="rn">Franciscan Renewal Center</div><div class="rd">Grief, depression, and divorce support groups. Scottsdale.</div><div class="rco">Phone: 480-948-7460 | 5802 E. Lincoln Dr., Scottsdale</div></div>
-      <div class="rc adult-rc"><div class="rn">Hospice of the Valley</div><div class="rd">Grief support groups for adults, children, and families. Multiple locations.</div><div class="rco">Phone: 602-530-6900 | hov.org</div></div>
-      <div class="rc adult-rc"><div class="rn">MISS Foundation</div><div class="rd">Support for families who have lost an infant or child.</div><div class="rco">Phone: 602-279-6477 | missfoundation.org</div></div>
-      <div class="rc adult-rc"><div class="rn">Stepping Stones of Hope</div><div class="rd">Grief support groups and individual services. Phoenix.</div><div class="rco">Phone: 602-264-7520 | 4000 N. 7th St., Phoenix</div></div>
-    </div>
-  </div>
-</div>
-
-<div class="sec fade-in" id="a-hospital">
-  <div class="sec-header adult-hdr"><h2>Inpatient / Hospital</h2></div>
-  <div class="sec-body">
-    <div class="subsec">
-      <div class="subsec-label adult-label">Level 1 Psychiatric (Private Insurance)</div>
-      <div class="rg">
-        <div class="rc adult-rc"><div class="rn">Aurora Behavioral Health</div><div class="rd">Inpatient psychiatric and detox. East (Tempe) and West (Glendale) campuses.</div><div class="rco">Phone: 480-345-5400</div></div>
-        <div class="rc adult-rc"><div class="rn">Banner Behavioral Health</div><div class="rd">Inpatient psychiatric care. Scottsdale.</div><div class="rco">Phone: 480-448-7500 | 7575 E. Earll Dr., Scottsdale</div></div>
-        <div class="rc adult-rc"><div class="rn">Copper Springs BH</div><div class="rd">Inpatient psychiatric. East (Gilbert) and West (Avondale) campuses.</div><div class="rco">East: 480-667-5500 | West: 480-565-3035</div></div>
-        <div class="rc adult-rc"><div class="rn">Destiny Springs</div><div class="rd">Inpatient psychiatric and geropsych. Cases involving methadone staffed with medical director. Surprise.</div><div class="rco">Phone: 623-233-3000 | 17300 N. Dysart Rd., Surprise</div></div>
-        <div class="rc adult-rc"><div class="rn">Havens Behavioral Health</div><div class="rd">Inpatient psychiatric and geropsych. Must self-admit — no POA. Phoenix.</div><div class="rco">Phone: 623-236-2024 | 1201 S. 7th Ave., Phoenix</div></div>
-        <div class="rc adult-rc"><div class="rn">Oasis Behavioral Health</div><div class="rd">Inpatient psychiatric. AHCCCS accepted. Chandler.</div><div class="rco">Phone: 800-844-6435 | 2190 N. Grace Blvd., Chandler</div></div>
-        <div class="rc adult-rc"><div class="rn">Quail Run Behavioral Health</div><div class="rd">Inpatient psychiatric, PHP, and IOP. Methadone up to 30mg. Phoenix.</div><div class="rco">Phone: 602-455-5694 | 2545 W. Quail Ave., Phoenix</div></div>
-        <div class="rc adult-rc"><div class="rn">Valley Hospital</div><div class="rd">Inpatient psychiatric, PHP, and IOP. Military programs available. Phoenix.</div><div class="rco">Phone: 602-952-3939 | 3550 E. Pinchot Ave., Phoenix</div></div>
+    <div class="rl">
+      <div class="ri iop-ri">
+        <div class="ri-left">
+          <div class="ri-name">Adolescent Substance Abuse Program (ASAP)</div>
+          <div class="ri-desc">Outpatient substance abuse IOP for adolescents. Ages 12–18. Multiple East Valley, West Valley, Phoenix, and Scottsdale locations. AHCCCS and private insurance.</div>
+        </div>
+        <div class="ri-contact">602-434-0249<br><span style="font-weight:400;font-size:0.73rem;">asapaz.com</span></div>
       </div>
-    </div>
-    <div class="subsec">
-      <div class="subsec-label adult-label">Sub-Acute / Observation (AHCCCS &amp; Private)</div>
-      <div class="rg">
-        <div class="rc adult-rc"><div class="rn">CBI West &amp; CPEC</div><div class="rd">Sub-acute and observation for psych, dual diagnosis, and detox. Avondale and Mesa.</div><div class="rco">Phone: 877-931-9142</div></div>
-        <div class="rc adult-rc"><div class="rn">ConnectionsAZ / UPC</div><div class="rd">Sub-acute and observation. Phoenix.</div><div class="rco">Phone: 602-416-7600 | 1202 S. 7th Ave., Phoenix</div></div>
-        <div class="rc adult-rc"><div class="rn">Recovery Innovations (RIAZ)</div><div class="rd">Sub-acute and observation. Transport-to-Treatment (T3) program picks up from hospital — voluntary, Maricopa County.</div><div class="rco">Phone: 602-636-4605 | T3 Intake: 602-636-4352</div></div>
+      <div class="ri iop-ri">
+        <div class="ri-left">
+          <div class="ri-name">Aurora Behavioral Health PHP / IOP</div>
+          <div class="ri-desc">Partial hospitalization and intensive outpatient programs. Adult and adolescent tracks. Tempe and Glendale campuses.</div>
+        </div>
+        <div class="ri-contact">623-344-4400</div>
       </div>
-    </div>
-  </div>
-</div>
-
-<div class="sec fade-in" id="a-iop">
-  <div class="sec-header adult-hdr"><h2>IOP / PHP Programs</h2></div>
-  <div class="sec-body">
-    <div class="rg">
-      <div class="rc adult-rc"><div class="rn">Aurora Behavioral Health</div><div class="rd">PHP and IOP. Tempe and Glendale campuses.</div><div class="rco">Phone: 623-344-4444</div></div>
-      <div class="rc adult-rc"><div class="rn">Charlie Health</div><div class="rd">Virtual IOP, ages 11–33. AHCCCS and most commercial plans. LGBTQ+, BIPOC, military, and Spanish-language programs. No waitlist.</div><div class="rco">charliehealth.com</div></div>
-      <div class="rc adult-rc"><div class="rn">Oasis Behavioral Health</div><div class="rd">Adult IOP, PHP, and Women-Only IOP. Gilbert.</div><div class="rco">Phone: 480-944-0457 | 1425 S. Higley Rd., Gilbert</div></div>
-      <div class="rc adult-rc"><div class="rn">PSL (Phoenix St. Luke's)</div><div class="rd">Substance use and mental health PHP/IOP. AHCCCS, commercial, Medicare. Momentum program for SMI population. Phoenix.</div><div class="rco">Phone: 602-251-8535 | 1800 E. Van Buren, Phoenix</div></div>
-      <div class="rc adult-rc"><div class="rn">Recovery Crisis Respite Program (RCRP)</div><div class="rd">Short-term residential respite, 18+, T19/SMI. Counseling and peer support. No severe DD, detox, or DTS/DTO. Peoria.</div><div class="rco">Phone: 602-636-4380 | 11361 N. 99th Ave., Ste 107, Peoria</div></div>
-      <div class="rc adult-rc"><div class="rn">Sovereign Health Group</div><div class="rd">Women-only, trauma, substance abuse, and dual diagnosis. Chandler.</div><div class="rco">Phone: 866-598-5661 | 111 S. Hearthstone Way, Chandler</div></div>
-      <div class="rc adult-rc"><div class="rn">STAR Centers</div><div class="rd">Life skills, employment, counseling, and young adult program (18–25). AHCCCS and sliding scale. East (Mesa), Central (Phoenix), and West (Avondale).</div><div class="rco">East: 480-649-3642 | Central: 602-685-1295 | West: 623-882-8463</div></div>
-    </div>
-  </div>
-</div>
-
-<div class="sec fade-in" id="a-legal">
-  <div class="sec-header adult-hdr"><h2>Legal Aid</h2></div>
-  <div class="sec-body">
-    <div class="rg">
-      <div class="rc adult-rc"><div class="rn">Arizona Center for Disability Law</div><div class="rd">Legal advocacy for individuals with disabilities. Phoenix.</div><div class="rco">Phone: 602-274-6287 | 5025 E. Washington St., Ste 202, Phoenix</div></div>
-      <div class="rc adult-rc"><div class="rn">Arizona Law Help</div><div class="rd">Legal resources and referrals for self-represented individuals.</div><div class="rco">azlawhelp.org</div></div>
-      <div class="rc adult-rc"><div class="rn">Community Legal Services</div><div class="rd">Free civil legal help for low-income Arizonans. Multiple services including divorce.</div><div class="rco">Phone: 1-800-852-9075 | clsaz.org</div></div>
-      <div class="rc adult-rc"><div class="rn">Fresh Start Women's Foundation</div><div class="rd">Family law support and legal assistance for women. Phoenix.</div><div class="rco">Phone: 602-252-8494 | freshstartwomen.org</div></div>
-      <div class="rc adult-rc"><div class="rn">IRC — ALERT (Arizona League to End Trafficking)</div><div class="rd">Human trafficking support for refugee and asylum seekers. Adults and minors. 24/7.</div><div class="rco">Phone: 888-602-5378 | rescue.org/united-states/phoenix-az</div></div>
-    </div>
-  </div>
-</div>
-
-<div class="sec fade-in" id="a-lgbtq">
-  <div class="sec-header adult-hdr"><h2>LGBTQ+</h2></div>
-  <div class="sec-body">
-    <div class="rg">
-      <div class="rc adult-rc"><div class="rn">Lambda Phoenix Center</div><div class="rd">LGBTQ+ community center and recovery services. Phoenix.</div><div class="rco">2622 N. 16th St., Phoenix | lambdaphx.org</div></div>
-      <div class="rc adult-rc"><div class="rn">One-n-Ten</div><div class="rd">Support services for LGBTQ+ youth and young adults, ages 14–24. Phoenix.</div><div class="rco">Phone: 602-400-2601 | onenten.org</div></div>
-      <div class="rc adult-rc"><div class="rn">PFLAG Phoenix</div><div class="rd">Support for LGBTQ+ individuals and their families.</div><div class="rco">Phone: 602-843-1404 | pflagphoenix.org</div></div>
-      <div class="rc adult-rc"><div class="rn">Trans Spectrum of AZ</div><div class="rd">Support and advocacy for transgender individuals. Phoenix.</div><div class="rco">Phone: 602-313-0440 | tsaz.org</div></div>
-      <div class="rc adult-rc"><div class="rn">Trevor Project</div><div class="rd">24/7 crisis support for LGBTQ+ youth.</div><div class="rco">Phone: 866-488-7386 | thetrevorproject.org</div></div>
-    </div>
-  </div>
-</div>
-
-<div class="sec fade-in" id="a-medical">
-  <div class="sec-header adult-hdr"><h2>Medical &amp; Dental</h2></div>
-  <div class="sec-body">
-    <div class="rg">
-      <div class="rc adult-rc"><div class="rn">Circle the City</div><div class="rd">Healthcare for individuals experiencing homelessness. Phoenix.</div><div class="rco">Phone: 602-776-0775 | 300 W. Clarendon Ave., Phoenix</div></div>
-      <div class="rc adult-rc"><div class="rn">HonorHealth NOAH Clinics</div><div class="rd">Primary and behavioral health care for underserved patients. AHCCCS accepted.</div><div class="rco">Phone: 480-882-4545</div></div>
-      <div class="rc adult-rc"><div class="rn">Mission of Mercy</div><div class="rd">Free medications. Phoenix.</div><div class="rco">Phone: 602-861-2233 | 360 E. Coronado Rd., Phoenix</div></div>
-      <div class="rc adult-rc"><div class="rn">Valleywise Community Health Centers</div><div class="rd">Primary care, dental, and behavioral health. Sliding scale and AHCCCS accepted. 11 locations across Maricopa County.</div><div class="rco">Phoenix: 602-344-6300 | Mesa: 480-344-6200 | Chandler: 480-344-6100</div></div>
-    </div>
-  </div>
-</div>
-
-<div class="sec fade-in" id="a-housing">
-  <div class="sec-header adult-hdr"><h2>Housing &amp; Shelter</h2></div>
-  <div class="sec-body">
-    <div class="subsec">
-      <div class="subsec-label adult-label">Emergency &amp; General</div>
-      <div class="rg">
-        <div class="rc adult-rc"><div class="rn">CASS Shelter (Men)</div><div class="rd">Emergency shelter for men. Phoenix.</div><div class="rco">Phone: 602-256-6945 | 230 S. 12th Ave., Phoenix</div></div>
-        <div class="rc adult-rc"><div class="rn">Homeward Bound</div><div class="rd">Housing and support services for families. Phoenix.</div><div class="rco">Phone: 602-263-7654 | 2302 W. Colter, Phoenix</div></div>
-        <div class="rc adult-rc"><div class="rn">Mesa Emergency Housing Voucher</div><div class="rd">Emergency housing vouchers. Call to start the process.</div><div class="rco">Phone: 602-229-5155</div></div>
-        <div class="rc adult-rc"><div class="rn">Phoenix Dream Center</div><div class="rd">Shelter, transitional housing, and human trafficking program. Phoenix.</div><div class="rco">Phone: 602-346-8701 | 3210 NW Grand Ave., Phoenix</div></div>
-        <div class="rc adult-rc"><div class="rn">Save the Family</div><div class="rd">Family housing and support services. Mesa.</div><div class="rco">Phone: 480-898-0228 | 125 E. University Dr., Mesa</div></div>
-        <div class="rc adult-rc"><div class="rn">UMOM / Family Housing Hub</div><div class="rd">Emergency shelter and housing for families. Phoenix.</div><div class="rco">Phone: 602-595-8700 | 3307 E. Van Buren, Phoenix</div></div>
+      <div class="ri iop-ri">
+        <div class="ri-left">
+          <div class="ri-name">Charlie Health</div>
+          <div class="ri-desc">Virtual IOP. Ages 8–64. AHCCCS and most commercial plans accepted. Specialized tracks for LGBTQ+, BIPOC, military, and Spanish-speaking individuals. Typically minimal wait times.</div>
+        </div>
+        <div class="ri-contact">charliehealth.com</div>
       </div>
-    </div>
-    <div class="subsec">
-      <div class="subsec-label adult-label">Heat Relief (Activated during Excessive Heat Warnings, 11am–5pm)</div>
-      <div class="rg">
-        <div class="rc adult-rc"><div class="rn">Salvation Army Heat Relief Stations</div><div class="rd">Stations in Apache Junction, Avondale, Chandler, Glendale, Mesa, Phoenix, Surprise, and Tempe. Open on NWS Excessive Heat Warning days.</div><div class="rco">salvationarmyusa.org</div></div>
+      <div class="ri iop-ri">
+        <div class="ri-left">
+          <div class="ri-name">Doorways Arizona</div>
+          <div class="ri-desc">Eating disorder-focused IOP and general mental health services. Phoenix.</div>
+        </div>
+        <div class="ri-contact">602-997-2880</div>
+      </div>
+      <div class="ri iop-ri">
+        <div class="ri-left">
+          <div class="ri-name">Oasis Behavioral Health IOP / PHP</div>
+          <div class="ri-desc">Adult IOP, PHP, and Women-Only IOP. Gilbert.</div>
+        </div>
+        <div class="ri-contact">480-944-0457</div>
+      </div>
+      <div class="ri iop-ri">
+        <div class="ri-left">
+          <div class="ri-name">Phoenix St. Luke's Behavioral Health PHP / IOP</div>
+          <div class="ri-desc">Substance use and mental health PHP/IOP. AHCCCS, commercial, and Medicare. Momentum program available for SMI population. Phoenix.</div>
+        </div>
+        <div class="ri-contact">602-251-8535</div>
+      </div>
+      <div class="ri iop-ri">
+        <div class="ri-left">
+          <div class="ri-name">STAR Centers</div>
+          <div class="ri-desc">Life skills, employment, and counseling programs. Young adult track for ages 18–25. AHCCCS and sliding scale. East (Mesa), Central (Phoenix), and West (Avondale) locations.</div>
+        </div>
+        <div class="ri-contact">East: 480-649-3642<br>Central: 602-685-1295<br>West: 623-882-8463</div>
+      </div>
+      <div class="ri iop-ri">
+        <div class="ri-left">
+          <div class="ri-name">Touchstone Health Services</div>
+          <div class="ri-desc">Youth-focused step-down and respite services. IOP available. Phoenix.</div>
+        </div>
+        <div class="ri-contact">866-207-3882</div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="sec fade-in" id="a-safety">
-  <div class="sec-header adult-hdr"><h2>Domestic Violence</h2></div>
-  <div class="sec-body">
-    <div class="rg">
-      <div class="rc adult-rc"><div class="rn">AZ DV Hotline</div><div class="rd">24/7 crisis line and shelter referrals statewide.</div><div class="rco">Phone: 800-782-6400</div></div>
-      <div class="rc adult-rc"><div class="rn">Autumn House (Mesa)</div><div class="rd">Emergency shelter for DV survivors. Mesa.</div><div class="rco">Phone: 480-890-3039 or 480-835-5555</div></div>
-      <div class="rc adult-rc"><div class="rn">Chrysalis (Phoenix)</div><div class="rd">Shelter and DV services. Phoenix.</div><div class="rco">Phone: 602-944-4999</div></div>
-      <div class="rc adult-rc"><div class="rn">Maricopa Centralized Screening</div><div class="rd">Shelter placement coordination. Maricopa County.</div><div class="rco">Phone: 480-890-3039</div></div>
-      <div class="rc adult-rc"><div class="rn">My Sister's Place (Chandler)</div><div class="rd">DV shelter and services. Chandler area.</div><div class="rco">Phone: 480-821-1024</div></div>
-      <div class="rc adult-rc"><div class="rn">New Life Center (Goodyear)</div><div class="rd">DV shelter and services. West Valley.</div><div class="rco">Phone: 623-932-4404</div></div>
-      <div class="rc adult-rc"><div class="rn">Sojourner Center (Phoenix)</div><div class="rd">Emergency shelter, counseling, and advocacy. Phoenix.</div><div class="rco">Phone: 602-244-0089</div></div>
-    </div>
-  </div>
+
+<!-- OUTPATIENT -->
+<div class="level-divider fade-in">
+  <div class="level-line" style="background: linear-gradient(90deg, var(--outpatient-color), #34d399);"></div>
+  <div class="level-badge" style="background: linear-gradient(135deg, var(--outpatient-color), #34d399);">Outpatient Therapy &amp; Counseling</div>
+  <div class="level-line" style="background: linear-gradient(90deg, #34d399, var(--outpatient-color));"></div>
 </div>
 
-<div class="sec fade-in" id="a-substance">
-  <div class="sec-header adult-hdr"><h2>Substance Abuse</h2></div>
+<div class="sec fade-in" id="outpatient">
+  <div class="sec-header" style="background: linear-gradient(135deg, var(--outpatient-color), #34d399);">
+    <span class="sec-note">Ongoing treatment, counseling, and medication management support</span>
+  </div>
   <div class="sec-body">
+
     <div class="subsec">
-      <div class="subsec-label adult-label">Support Groups</div>
-      <div class="rg">
-        <div class="rc adult-rc"><div class="rn">Al-Anon / Nar-Anon</div><div class="rd">Support for families and friends of people with substance use disorders.</div><div class="rco">Al-Anon: 1-888-425-2666 | Nar-Anon: 800-477-6291</div></div>
-        <div class="rc adult-rc"><div class="rn">Alcoholics Anonymous</div><div class="rd">12-step peer support for alcohol use disorder. Multiple meeting locations.</div><div class="rco">Phone: 602-264-1341 | aa.org</div></div>
-        <div class="rc adult-rc"><div class="rn">Co-Dependents Anonymous (CoDA)</div><div class="rd">12-step support for codependency and relationship issues.</div><div class="rco">Phone: 602-277-7991 | coda.org</div></div>
-        <div class="rc adult-rc"><div class="rn">Narcotics Anonymous</div><div class="rd">12-step peer support for drug addiction. Multiple meetings statewide.</div><div class="rco">Phone: 602-325-4702 | arizona-na.org</div></div>
-        <div class="rc adult-rc"><div class="rn">SMART Recovery</div><div class="rd">Science-based alternative to 12-step programs. Online and in-person meetings.</div><div class="rco">smartrecovery.org</div></div>
+      <div class="subsec-label" style="color: var(--outpatient-color);">Integrated Behavioral Health Systems</div>
+      <div class="rl">
+        <div class="ri outpatient-ri">
+          <div class="ri-left">
+            <div class="ri-name">La Frontera Empact</div>
+            <div class="ri-desc">Outpatient behavioral health and crisis services. Maricopa and Pinal counties.</div>
+          </div>
+          <div class="ri-contact">480-784-1514</div>
+        </div>
+        <div class="ri outpatient-ri">
+          <div class="ri-left">
+            <div class="ri-name">Resilient Health</div>
+            <div class="ri-desc">Outpatient behavioral health. Specialty program for first-episode psychosis.</div>
+          </div>
+          <div class="ri-contact">877-779-2470</div>
+        </div>
+        <div class="ri outpatient-ri">
+          <div class="ri-left">
+            <div class="ri-name">Southwest Behavioral Health Services</div>
+            <div class="ri-desc">Comprehensive behavioral health provider offering outpatient therapy, psychiatry, substance use treatment, residential services, and housing support. Multiple locations.</div>
+          </div>
+          <div class="ri-contact">480-947-6353</div>
+        </div>
+        <div class="ri outpatient-ri">
+          <div class="ri-left">
+            <div class="ri-name">Terros Health</div>
+            <div class="ri-desc">Outpatient behavioral health and substance abuse treatment. Multiple Phoenix-area locations. AHCCCS accepted.</div>
+          </div>
+          <div class="ri-contact">602-685-6000</div>
+        </div>
+        <div class="ri outpatient-ri">
+          <div class="ri-left">
+            <div class="ri-name">Valle del Sol</div>
+            <div class="ri-desc">Mental health and substance abuse outpatient services. Bilingual services available. 9 locations.</div>
+          </div>
+          <div class="ri-contact">602-258-6797</div>
+        </div>
+        <div class="ri outpatient-ri">
+          <div class="ri-left">
+            <div class="ri-name">Valleywise Behavioral Health</div>
+            <div class="ri-desc">Outpatient counseling and medication management. Sliding scale and AHCCCS accepted. Multiple locations across Maricopa County.</div>
+          </div>
+          <div class="ri-contact">valleywise.org</div>
+        </div>
       </div>
     </div>
+
     <div class="subsec">
-      <div class="subsec-label adult-label">Outpatient Treatment (AHCCCS)</div>
-      <div class="rg">
-        <div class="rc adult-rc"><div class="rn">ConnectionsAZ</div><div class="rd">Opioid treatment and outpatient services. AHCCCS accepted.</div><div class="rco">Phone: 602-416-7600</div></div>
-        <div class="rc adult-rc"><div class="rn">Opioid Service Locator (AHCCCS)</div><div class="rd">Find AHCCCS-covered opioid treatment programs statewide.</div><div class="rco">opioidservicelocator.azahcccs.gov</div></div>
-        <div class="rc adult-rc"><div class="rn">Terros Health</div><div class="rd">Outpatient substance abuse and mental health treatment. Multiple Phoenix-area locations.</div><div class="rco">Phone: 602-685-6000</div></div>
+      <div class="subsec-label" style="color: var(--outpatient-color);">Community &amp; Social Service-Based Providers</div>
+      <div class="rl">
+        <div class="ri outpatient-ri">
+          <div class="ri-left">
+            <div class="ri-name">Catholic Charities Community Services</div>
+            <div class="ri-desc">Counseling and basic needs assistance. Multiple locations. Sliding scale available.</div>
+          </div>
+          <div class="ri-contact">602-285-1999</div>
+        </div>
+        <div class="ri outpatient-ri">
+          <div class="ri-left">
+            <div class="ri-name">Family Service Agency</div>
+            <div class="ri-desc">Counseling and medication management. Sliding scale available.</div>
+          </div>
+          <div class="ri-contact">602-264-9891</div>
+        </div>
+        <div class="ri outpatient-ri">
+          <div class="ri-left">
+            <div class="ri-name">Jewish Family &amp; Children's Services</div>
+            <div class="ri-desc">Counseling and mental health services. Open to all faiths.</div>
+          </div>
+          <div class="ri-contact">602-256-0528</div>
+        </div>
       </div>
     </div>
+
+  </div>
+</div>
+
+
+<!-- SPECIALIZED -->
+<div class="level-divider fade-in">
+  <div class="level-line" style="background: linear-gradient(90deg, var(--specialized-color), #a78bfa);"></div>
+  <div class="level-badge" style="background: linear-gradient(135deg, var(--specialized-color), #7c3aed);">Specialized Services</div>
+  <div class="level-line" style="background: linear-gradient(90deg, #a78bfa, var(--specialized-color));"></div>
+</div>
+
+<div class="sec fade-in" id="specialized">
+  <div class="sec-header" style="background: linear-gradient(135deg, var(--specialized-color), #7c3aed);">
+    <span class="sec-note">Specific clinical needs requiring focused or higher-specialty care</span>
+  </div>
+  <div class="sec-body">
+
     <div class="subsec">
-      <div class="subsec-label adult-label">Residential (AHCCCS)</div>
-      <div class="rg">
-        <div class="rc adult-rc"><div class="rn">Crossroads</div><div class="rd">Residential substance abuse treatment. Phoenix.</div><div class="rco">Phone: 602-263-5242 | 2002 E. Osborn Rd., Phoenix</div></div>
-        <div class="rc adult-rc"><div class="rn">Native American Connections</div><div class="rd">Residential and outpatient treatment with culturally tailored services. Phoenix.</div><div class="rco">Phone: 602-424-2060 | 4520 N. Central Ave., Phoenix</div></div>
-        <div class="rc adult-rc"><div class="rn">Salvation Army Adult Rehab</div><div class="rd">Free long-term residential program (6 months to 1 year). Phoenix.</div><div class="rco">Phone: 602-256-4500 | 1625 S. Central Ave., Phoenix</div></div>
+      <div class="subsec-label" style="color: var(--specialized-color);">Trauma, Suicide, and Complex Needs</div>
+      <div class="rl">
+        <div class="ri specialized-ri">
+          <div class="ri-left">
+            <div class="ri-name">The Hope Institute</div>
+            <div class="ri-desc">Specialized outpatient treatment for chronic suicidal ideation. Gilbert.</div>
+          </div>
+          <div class="ri-contact">480-770-1773</div>
+        </div>
+        <div class="ri specialized-ri">
+          <div class="ri-left">
+            <div class="ri-name">Equilibrium Counseling Center</div>
+            <div class="ri-desc">Outpatient counseling specializing in self-injury support services. Mesa.</div>
+          </div>
+          <div class="ri-contact">480-405-8365</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsec">
+      <div class="subsec-label" style="color: var(--specialized-color);">Eating Disorders</div>
+      <div class="rl">
+        <div class="ri specialized-ri">
+          <div class="ri-left">
+            <div class="ri-name">Community Connections</div>
+            <div class="ri-desc">Residential eating disorder program. Eligibility criteria and medical requirements vary — contact for current admission guidelines. Phoenix.</div>
+          </div>
+          <div class="ri-contact">623-242-8460</div>
+        </div>
+        <div class="ri specialized-ri">
+          <div class="ri-left">
+            <div class="ri-name">Doorways Arizona</div>
+            <div class="ri-desc">Eating disorder-focused IOP and mental health services. Phoenix.</div>
+          </div>
+          <div class="ri-contact">602-997-2880</div>
+        </div>
+        <div class="ri specialized-ri">
+          <div class="ri-left">
+            <div class="ri-name">Healthy Futures</div>
+            <div class="ri-desc">Eating disorder IOP. Scottsdale.</div>
+          </div>
+          <div class="ri-contact">480-451-8500</div>
+        </div>
+        <div class="ri specialized-ri">
+          <div class="ri-left">
+            <div class="ri-name">Rosewood</div>
+            <div class="ri-desc">Inpatient eating disorder treatment (Wickenburg) and outpatient services (Tempe).</div>
+          </div>
+          <div class="ri-contact">844-885-1593</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsec">
+      <div class="subsec-label" style="color: var(--specialized-color);">Autism &amp; Neurodevelopmental Services</div>
+      <div class="rl">
+        <div class="ri specialized-ri">
+          <div class="ri-left">
+            <div class="ri-name">Arizona Autism United</div>
+            <div class="ri-desc">FBAs, behavioral coaching, family support, and parent management training. Phoenix.</div>
+          </div>
+          <div class="ri-contact">602-773-5773</div>
+        </div>
+        <div class="ri specialized-ri">
+          <div class="ri-left">
+            <div class="ri-name">Marc Community Resources</div>
+            <div class="ri-desc">ABA therapy, behavioral health services, and DBT programming for emotional regulation and developmental needs. Mesa.</div>
+          </div>
+          <div class="ri-contact">480-969-3800</div>
+        </div>
+        <div class="ri specialized-ri">
+          <div class="ri-left">
+            <div class="ri-name">Southwest Autism Research &amp; Resource Center (SARRC)</div>
+            <div class="ri-desc">Diagnostic, therapeutic, and community programs. Multiple locations.</div>
+          </div>
+          <div class="ri-contact">602-340-8717</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- TRIBAL -->
+<div class="level-divider fade-in">
+  <div class="level-line" style="background: linear-gradient(90deg, var(--tribal-color), #d97706);"></div>
+  <div class="level-badge" style="background: linear-gradient(135deg, var(--tribal-color), #d97706);">Tribal &amp; Native American</div>
+  <div class="level-line" style="background: linear-gradient(90deg, #d97706, var(--tribal-color));"></div>
+</div>
+
+<div class="sec fade-in" id="tribal">
+  <div class="sec-header" style="background: linear-gradient(135deg, var(--tribal-color), #d97706);">
+    <span class="sec-note">Culturally responsive services for Native American individuals and families</span>
+  </div>
+  <div class="sec-body">
+    <div class="rl">
+      <div class="ri tribal-ri">
+        <div class="ri-left">
+          <div class="ri-name">Desert Visions Youth Wellness Center</div>
+          <div class="ri-desc">IHS-funded behavioral health and substance use treatment for Native youth. Sacaton (Gila River Indian Community).</div>
+        </div>
+        <div class="ri-contact">888-431-4096</div>
+      </div>
+      <div class="ri tribal-ri">
+        <div class="ri-left">
+          <div class="ri-name">Inter Tribal Council of Arizona (ITCA)</div>
+          <div class="ri-desc">Statewide consortium of 21 federally recognized tribes. Functions as a coordination, policy, and advocacy body — not a direct service provider. Can assist with referrals and system navigation for tribal members across Arizona.</div>
+        </div>
+        <div class="ri-contact">602-258-4822<br><span style="font-weight:400;font-size:0.73rem;">itcaonline.com</span></div>
+      </div>
+      <div class="ri tribal-ri">
+        <div class="ri-left">
+          <div class="ri-name">Native American Connections</div>
+          <div class="ri-desc">Counseling, housing, and substance use treatment. Culturally tailored programs for Native Americans. Phoenix.</div>
+        </div>
+        <div class="ri-contact">602-254-3247<br><span style="font-weight:400;font-size:0.73rem;">nativeconnections.org</span></div>
+      </div>
+      <div class="ri tribal-ri">
+        <div class="ri-left">
+          <div class="ri-name">Native Health Phoenix</div>
+          <div class="ri-desc">Integrated primary care and behavioral health for urban Native Americans. Phoenix.</div>
+        </div>
+        <div class="ri-contact">602-279-5262<br><span style="font-weight:400;font-size:0.73rem;">nativehealthphoenix.org</span></div>
+      </div>
+      <div class="ri tribal-ri">
+        <div class="ri-left">
+          <div class="ri-name">Phoenix Indian Medical Center (PIMC)</div>
+          <div class="ri-desc">IHS facility. Behavioral health and medical services for eligible Native Americans. Includes DBT programming. Phoenix.</div>
+        </div>
+        <div class="ri-contact">602-263-1518<br><span style="font-weight:400;font-size:0.73rem;">4212 N. 16th St., Phoenix</span></div>
+      </div>
+      <div class="ri tribal-ri">
+        <div class="ri-left">
+          <div class="ri-name">Salt River Pima-Maricopa Indian Community Behavioral Health Services</div>
+          <div class="ri-desc">Behavioral health services for Salt River tribal members and employees.</div>
+        </div>
+        <div class="ri-contact">480-850-4133</div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="sec fade-in" id="a-transport">
-  <div class="sec-header adult-hdr"><h2>Transportation</h2></div>
-  <div class="sec-body">
-    <div class="rg">
-      <div class="rc adult-rc"><div class="rn">AHCCCS Non-Emergency Medical Transport</div><div class="rd">Transportation through AHCCCS health plans. Contact your specific plan.</div><div class="rco">Mercy Care: 602-263-3000 | AZ Complete Health: 888-788-4408 | UHC: 800-348-4058</div></div>
-      <div class="rc adult-rc"><div class="rn">St. Vincent de Paul / Salvation Army</div><div class="rd">Bus tickets and stranded traveler assistance.</div><div class="rco">St. Vincent: 602-850-6777 | Salvation Army: 602-267-4195</div></div>
-      <div class="rc adult-rc"><div class="rn">Valley Metro / Dial-A-Ride</div><div class="rd">Public transit and paratransit service for Maricopa County.</div><div class="rco">Phone: 602-253-5000 | valleymetro.org</div></div>
-    </div>
-  </div>
+
+<!-- COMMUNITY & RECOVERY -->
+<div class="level-divider fade-in">
+  <div class="level-line" style="background: linear-gradient(90deg, var(--community-color), #6b7280);"></div>
+  <div class="level-badge" style="background: linear-gradient(135deg, #374151, #6b7280);">Community &amp; Recovery Support</div>
+  <div class="level-line" style="background: linear-gradient(90deg, #6b7280, var(--community-color));"></div>
 </div>
 
-<div class="sec fade-in" id="a-veterans">
-  <div class="sec-header adult-hdr"><h2>Veterans</h2></div>
-  <div class="sec-body">
-    <div class="rg">
-      <div class="rc adult-rc"><div class="rn">Catholic Charities MANA House</div><div class="rd">Housing and support services for homeless veterans. Phoenix.</div><div class="rco">Phone: 602-254-6785 | 2422 W. Holly St., Phoenix</div></div>
-      <div class="rc adult-rc"><div class="rn">Gilbert VA Clinic</div><div class="rd">VA outpatient clinic. East Valley.</div><div class="rco">Phone: 480-397-2800 | 3285 S. Val Vista Dr., Gilbert</div></div>
-      <div class="rc adult-rc"><div class="rn">Mesa Vet Center</div><div class="rd">Readjustment counseling for combat veterans. Mesa.</div><div class="rco">Phone: 480-610-6727 | 1303 S. Longmore, Mesa</div></div>
-      <div class="rc adult-rc"><div class="rn">Military OneSource</div><div class="rd">24/7 referral hotline to local off-base mental health providers that accept Tricare.</div><div class="rco">Phone: 800-342-9647 | militaryonesource.mil</div></div>
-      <div class="rc adult-rc"><div class="rn">Phoenix VA Health Care System</div><div class="rd">Full-service VA hospital. Medical and mental health appointments.</div><div class="rco">Phone: 602-277-5551 | 650 E. Indian School Rd., Phoenix | MH: 602-222-2752 opt. 3</div></div>
-      <div class="rc adult-rc"><div class="rn">Phoenix Vet Center</div><div class="rd">Readjustment counseling, PTSD, MST, and grief services. Phoenix.</div><div class="rco">Phone: 602-640-2981 | 77 E. Weldon Ave., Ste 100, Phoenix</div></div>
-      <div class="rc adult-rc"><div class="rn">Veterans Crisis Line</div><div class="rd">24/7 crisis support for veterans and family members.</div><div class="rco">Phone: 800-273-8255 (Press 1) | Text: 838255</div></div>
-      <div class="rc adult-rc"><div class="rn">West Valley Vet Center</div><div class="rd">Readjustment counseling. Peoria.</div><div class="rco">Phone: 623-398-8854 | 14050 N. 83rd Ave., Ste 170, Peoria</div></div>
-    </div>
+<div class="sec fade-in" id="community">
+  <div class="sec-header" style="background: linear-gradient(135deg, #374151, #6b7280);">
+    <span class="sec-note">Peer support, mutual aid, and follow-up services</span>
   </div>
-</div>
-
-<!-- ===== YOUTH ===== -->
-<div class="pop-divider youth fade-in"><div class="pop-line"></div><div class="pop-badge">Youth Resources (Ages 8–17)</div><div class="pop-line"></div></div>
-
-<div class="sec fade-in" id="c-adhd">
-  <div class="sec-header youth-hdr"><h2>ADHD &amp; Autism</h2></div>
   <div class="sec-body">
+
     <div class="subsec">
-      <div class="subsec-label youth-label">ADHD</div>
-      <div class="rg">
-        <div class="rc youth-rc"><div class="rn">ADD Clinic of AZ</div><div class="rd">Board-certified providers, ADHD testing. AHCCCS accepted. Phoenix.</div><div class="rco">Phone: 480-739-0007 | 12020 S. Warner Elliot Loop, Phoenix</div></div>
-        <div class="rc youth-rc"><div class="rn">CHADD</div><div class="rd">National organization with local East Valley and Scottsdale parent support groups.</div><div class="rco">chadd.org | East Valley chapter: chadd.net/591</div></div>
-        <div class="rc youth-rc"><div class="rn">Phoenix Children's Hospital ADHD Clinic</div><div class="rd">Testing and evaluation for ADHD. Phoenix.</div><div class="rco">Phone: 602-933-2327</div></div>
+      <div class="subsec-label" style="color: var(--community-color);">Peer Recovery &amp; Mental Health Support</div>
+      <div class="rl">
+        <div class="ri community-ri">
+          <div class="ri-left">
+            <div class="ri-name">Al-Anon / Nar-Anon</div>
+            <div class="ri-desc">Support groups for family members and friends of people with substance use disorders.</div>
+          </div>
+          <div class="ri-contact">Al-Anon: 1-888-425-2666<br>Nar-Anon: 800-477-6291</div>
+        </div>
+        <div class="ri community-ri">
+          <div class="ri-left">
+            <div class="ri-name">Alcoholics Anonymous (AA)</div>
+            <div class="ri-desc">12-step peer support for alcohol use disorder. Multiple meeting locations throughout Maricopa County. Visit website for meeting finder.</div>
+          </div>
+          <div class="ri-contact">602-264-1341<br><span style="font-weight:400;font-size:0.73rem;">aa.org</span></div>
+        </div>
+        <div class="ri community-ri">
+          <div class="ri-left">
+            <div class="ri-name">Co-Dependents Anonymous (CoDA)</div>
+            <div class="ri-desc">12-step support for codependency and relationship issues.</div>
+          </div>
+          <div class="ri-contact">602-277-7991<br><span style="font-weight:400;font-size:0.73rem;">coda.org</span></div>
+        </div>
+        <div class="ri community-ri">
+          <div class="ri-left">
+            <div class="ri-name">Mental Health America of Arizona</div>
+            <div class="ri-desc">Statewide advocacy, mental health resources, and referrals.</div>
+          </div>
+          <div class="ri-contact">480-997-4407<br><span style="font-weight:400;font-size:0.73rem;">mhaarizona.org</span></div>
+        </div>
+        <div class="ri community-ri">
+          <div class="ri-left">
+            <div class="ri-name">NAMI Valley of the Sun</div>
+            <div class="ri-desc">Free support groups, education classes (Family-to-Family, Peer-to-Peer), and advocacy.</div>
+          </div>
+          <div class="ri-contact">602-244-8166<br><span style="font-weight:400;font-size:0.73rem;">namivalleyofthesun.org</span></div>
+        </div>
+        <div class="ri community-ri">
+          <div class="ri-left">
+            <div class="ri-name">Narcotics Anonymous (NA)</div>
+            <div class="ri-desc">12-step peer support for drug addiction. Multiple meetings statewide. Visit website for meeting finder.</div>
+          </div>
+          <div class="ri-contact">602-325-4702<br><span style="font-weight:400;font-size:0.73rem;">arizona-na.org</span></div>
+        </div>
+        <div class="ri community-ri">
+          <div class="ri-left">
+            <div class="ri-name">SMART Recovery</div>
+            <div class="ri-desc">Science-based alternative to 12-step programs. Online and in-person meetings available.</div>
+          </div>
+          <div class="ri-contact">smartrecovery.org</div>
+        </div>
       </div>
     </div>
+
     <div class="subsec">
-      <div class="subsec-label youth-label">Autism</div>
-      <div class="rg">
-        <div class="rc youth-rc"><div class="rn">Arizona Autism United</div><div class="rd">FBAs, behavioral coaching, family support, and parent management training. Phoenix.</div><div class="rco">Phone: 602-773-5773 | azaunited.org</div></div>
-        <div class="rc youth-rc"><div class="rn">Autism Speaks Response Team</div><div class="rd">Connects families to autism services and resources nationwide.</div><div class="rco">Phone: 1-888-288-4762 | autismspeaks.org</div></div>
-        <div class="rc youth-rc"><div class="rn">DES Division of Developmental Disabilities (DDD)</div><div class="rd">State services and funding for individuals with developmental disabilities.</div><div class="rco">Phone: 844-770-9500 | DDDCustomerServiceCenter@azdes.gov</div></div>
-        <div class="rc youth-rc"><div class="rn">Marc Community Resources</div><div class="rd">ABA therapy, behavioral health, and DBT. Mesa.</div><div class="rco">Phone: 480-969-3800 | marcr.com</div></div>
-        <div class="rc youth-rc"><div class="rn">Southwest Autism Research &amp; Resource Center (SARRC)</div><div class="rd">Diagnostic, therapeutic, and community programs. Multiple locations.</div><div class="rco">Phone: 602-340-8717 | autismcenter.org</div></div>
+      <div class="subsec-label" style="color: var(--community-color);">Youth Peer &amp; Follow-Up Support</div>
+      <div class="rl">
+        <div class="ri community-ri">
+          <div class="ri-left">
+            <div class="ri-name">Teen Lifeline — Caring Contacts Program</div>
+            <div class="ri-desc">Post-crisis follow-up support for youth under 18. Trained peers reach out after crisis calls to provide ongoing connection and support. Part of the Teen Lifeline program.</div>
+          </div>
+          <div class="ri-contact">602-248-8336<br><span style="font-weight:400;font-size:0.73rem;">teenlifeline.org</span></div>
+        </div>
       </div>
     </div>
+
   </div>
 </div>
 
-<div class="sec fade-in" id="c-bh">
-  <div class="sec-header youth-hdr"><h2>Behavioral Health — Outpatient</h2></div>
+<!-- TRANSPORTATION -->
+<div class="level-divider fade-in">
+  <div class="level-line" style="background: linear-gradient(90deg, var(--transport-color), #38bdf8);"></div>
+  <div class="level-badge" style="background: linear-gradient(135deg, var(--transport-color), #0284c7);">Transportation</div>
+  <div class="level-line" style="background: linear-gradient(90deg, #38bdf8, var(--transport-color));"></div>
+</div>
+
+<div class="sec fade-in" id="transport">
+  <div class="sec-header" style="background: linear-gradient(135deg, var(--transport-color), #0284c7);">
+    <span class="sec-note">Getting to and from behavioral health appointments, PHP/IOP, and psychiatric care</span>
+  </div>
   <div class="sec-body">
+
     <div class="subsec">
-      <div class="subsec-label youth-label">AHCCCS / Sliding Scale</div>
-      <div class="rg">
-        <div class="rc youth-rc"><div class="rn">Arizona Children's Association</div><div class="rd">Behavioral health and trauma services for children and families statewide.</div><div class="rco">Phone: 800-944-7611 | arizonaschildren.org</div></div>
-        <div class="rc youth-rc"><div class="rn">Catholic Charities Community Services</div><div class="rd">Counseling on sliding scale. Multiple locations.</div><div class="rco">Phone: 602-749-4405 | catholiccharitiesaz.org</div></div>
-        <div class="rc youth-rc"><div class="rn">Jewish Family &amp; Children's Services</div><div class="rd">Counseling services for youth and families, open to all.</div><div class="rco">Phone: 602-279-7655 | jfcsaz.org</div></div>
-        <div class="rc youth-rc"><div class="rn">La Frontera Empact</div><div class="rd">Outpatient behavioral health and crisis services. Maricopa and Pinal counties.</div><div class="rco">Phone: 480-784-1514 | lafrontera-empact.org</div></div>
-        <div class="rc youth-rc"><div class="rn">People Empowering People (PEP-AZ)</div><div class="rd">Children ages 6–17. Assessment, individual, group, and family therapy, and case management. AHCCCS. Apache Junction.</div><div class="rco">Phone: 480-808-2301 | pepofaz.com</div></div>
-        <div class="rc youth-rc"><div class="rn">Southwest Human Development</div><div class="rd">Ages 0–5 and adolescent services. Autism and developmental support. Phoenix.</div><div class="rco">Phone: 602-266-5976 | 2850 N. 24th St., Phoenix</div></div>
-        <div class="rc youth-rc"><div class="rn">Terros Health</div><div class="rd">Outpatient mental health. AHCCCS. Multiple Phoenix-area locations.</div><div class="rco">Phone: 602-685-6000 | terroshealth.org</div></div>
-        <div class="rc youth-rc"><div class="rn">The Hope Institute</div><div class="rd">Specialized care for chronic suicidal ideation in youth. Gilbert.</div><div class="rco">Phone: 480-770-1773</div></div>
-        <div class="rc youth-rc"><div class="rn">Valle del Sol</div><div class="rd">Bilingual outpatient behavioral health. Multiple locations.</div><div class="rco">Phone: 602-258-6797 | valledelsol.com</div></div>
-        <div class="rc youth-rc"><div class="rn">Valleywise BH</div><div class="rd">Outpatient mental health and medications. Sliding scale. Mesa.</div><div class="rco">Phone: 480-344-2100 | 570 W. Brown Rd., Mesa</div></div>
+      <div class="subsec-label" style="color: var(--transport-color);">AHCCCS Non-Emergency Medical Transportation (NEMT)</div>
+      <div class="alert-note">
+        <strong>How it works:</strong> NEMT is a covered benefit for eligible AHCCCS members who cannot provide, secure, or pay for their own transportation to a covered service. It covers behavioral health appointments, PHP/IOP attendance, psychiatric care, doctor visits, and pharmacy trips. Rides are at no cost to the member.<br><br>
+        <strong>How to request:</strong> Call your health plan's member services line at least <strong>72 hours before your appointment</strong>. Have your AHCCCS ID number, appointment date and time, facility address, provider name, and any accessibility needs ready. Same-day requests may not be accommodated for non-urgent trips.<br><br>
+        <strong>Public transit option:</strong> Members may request a bus or light rail pass instead of a scheduled ride. Ask your health plan's member services representative for a public transportation pass — it will be mailed to you, so request it well in advance.<br><br>
+        <strong>Note:</strong> Some AHCCCS health plans actively coordinate NEMT as part of behavioral health adherence programs. Others ask members to first seek rides from family, friends, or neighbors before requesting a ride. Check with your specific health plan for how they handle NEMT requests.
+      </div>
+      <div class="rl">
+        <div class="ri transport-ri">
+          <div class="ri-left">
+            <div class="ri-name">Mercy Care — Member Services (NEMT)</div>
+            <div class="ri-desc">Request NEMT through Mercy Care member services. Listen for the "Transportation" prompt. Call at least 3 days before your appointment.</div>
+          </div>
+          <div class="ri-contact">1-800-564-5465<br><span style="font-weight:400;font-size:0.73rem;">TTY: 711</span></div>
+        </div>
+        <div class="ri transport-ri">
+          <div class="ri-left">
+            <div class="ri-name">UnitedHealthcare Community Plan — Member Services (NEMT)</div>
+            <div class="ri-desc">Request NEMT for AHCCCS Complete Care members. Call at least 72 hours before your health care visit. Same-day rides available for urgent care or hospital discharge.</div>
+          </div>
+          <div class="ri-contact">1-888-889-0358<br><span style="font-weight:400;font-size:0.73rem;">TTY: 711</span></div>
+        </div>
+        <div class="ri transport-ri">
+          <div class="ri-left">
+            <div class="ri-name">AZ Complete Health — Member Services (NEMT)</div>
+            <div class="ri-desc">Request NEMT for AZ Complete Health AHCCCS members.</div>
+          </div>
+          <div class="ri-contact">1-888-788-4408</div>
+        </div>
+        <div class="ri transport-ri">
+          <div class="ri-left">
+            <div class="ri-name">Banner University Family Care — Member Services (NEMT)</div>
+            <div class="ri-desc">Request NEMT for Banner ACC members. Covers transport to the closest appropriate AHCCCS-registered provider.</div>
+          </div>
+          <div class="ri-contact">1-833-252-5535</div>
+        </div>
       </div>
     </div>
+
     <div class="subsec">
-      <div class="subsec-label youth-label">Hotlines &amp; Peer Support</div>
-      <div class="rg">
-        <div class="rc youth-rc"><div class="rn">Teen Lifeline</div><div class="rd">Peer-to-peer support for youth under 18. Also offers Caring Contacts post-crisis program.</div><div class="rco">Phone: 602-248-8336 | teenlifeline.org</div></div>
-        <div class="rc youth-rc"><div class="rn">Teenline</div><div class="rd">Teens helping teens. Phone and text support.</div><div class="rco">Phone: 310-855-4673 | Text TEEN to 839863</div></div>
-        <div class="rc youth-rc"><div class="rn">Tumbleweed Crisis Hotline</div><div class="rd">Crisis support for youth.</div><div class="rco">Phone: 1-888-816-4702</div></div>
+      <div class="subsec-label" style="color: var(--transport-color);">Community Transit</div>
+      <div class="rl">
+        <div class="ri transport-ri">
+          <div class="ri-left">
+            <div class="ri-name">Valley Metro — Bus &amp; Light Rail</div>
+            <div class="ri-desc">Public transit serving the greater Phoenix metro area including Mesa, Tempe, Chandler, Gilbert, Scottsdale, and Glendale. Route planning and schedules available on website.</div>
+          </div>
+          <div class="ri-contact">602-253-5000<br><span style="font-weight:400;font-size:0.73rem;">valleymetro.org</span></div>
+        </div>
+        <div class="ri transport-ri">
+          <div class="ri-left">
+            <div class="ri-name">Valley Metro Dial-a-Ride (ADA Paratransit)</div>
+            <div class="ri-desc">Door-to-door paratransit service for individuals who are unable to use fixed-route buses due to a disability. Eligibility certification required before first use.</div>
+          </div>
+          <div class="ri-contact">602-253-5000<br><span style="font-weight:400;font-size:0.73rem;">valleymetro.org/paratransit</span></div>
+        </div>
       </div>
     </div>
+
   </div>
 </div>
 
-<div class="sec fade-in" id="c-eating">
-  <div class="sec-header youth-hdr"><h2>Eating Disorders</h2></div>
-  <div class="sec-body">
-    <div class="rg">
-      <div class="rc youth-rc"><div class="rn">Community Connections</div><div class="rd">Residential eating disorder program. AHCCCS only. Min BMI 14.7. Phoenix.</div><div class="rco">Phone: 623-242-8460 | 4025 W. Bell Rd., Ste 6, Phoenix</div></div>
-      <div class="rc youth-rc"><div class="rn">Doorways Arizona</div><div class="rd">Eating disorder and mental health IOP. Phoenix.</div><div class="rco">Phone: 602-997-2880 | 4747 N. 7th St., Phoenix</div></div>
-      <div class="rc youth-rc"><div class="rn">Eating Disorders Anonymous</div><div class="rd">Peer support groups for eating disorder recovery.</div><div class="rco">eatingdisordersanonymous.org</div></div>
-      <div class="rc youth-rc"><div class="rn">Healthy Futures</div><div class="rd">Eating disorder IOP. Scottsdale.</div><div class="rco">Phone: 480-451-8500 | 8065 N. 85th Way, Scottsdale</div></div>
-      <div class="rc youth-rc"><div class="rn">Rosewood</div><div class="rd">Inpatient (Wickenburg) and outpatient (Tempe) eating disorder treatment.</div><div class="rco">Phone: 844-885-1593 | rosewoodranch.com</div></div>
-    </div>
-  </div>
+
+<!-- HOUSING -->
+<div class="level-divider fade-in">
+  <div class="level-line" style="background: linear-gradient(90deg, var(--housing-color), #34d399);"></div>
+  <div class="level-badge" style="background: linear-gradient(135deg, var(--housing-color), #059669);">Housing &amp; Stabilization</div>
+  <div class="level-line" style="background: linear-gradient(90deg, #34d399, var(--housing-color));"></div>
 </div>
 
-<div class="sec fade-in" id="c-family">
-  <div class="sec-header youth-hdr"><h2>Family &amp; Parent Support</h2></div>
-  <div class="sec-body">
-    <div class="rg">
-      <div class="rc youth-rc"><div class="rn">Child and Family Resources</div><div class="rd">Early childhood and family support programs. Multiple locations.</div><div class="rco">Phone: 602-234-3941 | childfamilyresources.org</div></div>
-      <div class="rc youth-rc"><div class="rn">Chicanos Por La Causa (Parenting)</div><div class="rd">Parenting support and family services. Multiple locations.</div><div class="rco">Phone: 602-248-0428 | cplc.org</div></div>
-      <div class="rc youth-rc"><div class="rn">Family Involvement Center</div><div class="rd">Support for families navigating the behavioral health system. Phoenix.</div><div class="rco">Phone: 602-288-0155 | 5333 N. 7th St., Ste A-100, Phoenix</div></div>
-      <div class="rc youth-rc"><div class="rn">NAMI Basics</div><div class="rd">Free 6-week education course for families of youth with mental illness.</div><div class="rco">Phone: 602-244-8166 | namivalleyofthesun.org</div></div>
-      <div class="rc youth-rc"><div class="rn">Parent Support Arizona</div><div class="rd">Support for parents of children with special needs and behavioral health challenges.</div><div class="rco">Phone: 480-382-4020 | parentsupportarizona.com</div></div>
-    </div>
+<div class="sec fade-in" id="housing">
+  <div class="sec-header" style="background: linear-gradient(135deg, var(--housing-color), #059669);">
+    <span class="sec-note">Emergency shelter, transitional housing, and recovery-linked housing support</span>
   </div>
-</div>
-
-<div class="sec fade-in" id="c-grief">
-  <div class="sec-header youth-hdr"><h2>Grief</h2></div>
   <div class="sec-body">
-    <div class="rg">
-      <div class="rc youth-rc"><div class="rn">Billy's Place</div><div class="rd">Grief support specifically for children. Glendale.</div><div class="rco">Phone: 623-414-9838 | 21448 N. 75th Ave., Glendale</div></div>
-      <div class="rc youth-rc"><div class="rn">New Song Center for Grieving Children</div><div class="rd">Free grief support for children and families. Multiple locations.</div><div class="rco">Phone: 480-951-8985 | hov.org</div></div>
-      <div class="rc youth-rc"><div class="rn">Stepping Stones of Hope</div><div class="rd">Grief counseling and support groups for youth and families. Phoenix.</div><div class="rco">Phone: 602-264-7520 | steppingstonesofhope.org</div></div>
-      <div class="rc youth-rc"><div class="rn">Your Art Your Story</div><div class="rd">Free arts program for children and teens affected by suicide loss.</div><div class="rco">yourartyourstory.org</div></div>
-    </div>
-  </div>
-</div>
 
-<div class="sec fade-in" id="c-housing">
-  <div class="sec-header youth-hdr"><h2>Housing</h2></div>
-  <div class="sec-body">
-    <div class="rg">
-      <div class="rc youth-rc"><div class="rn">HomeBase Youth Services</div><div class="rd">Services for homeless and at-risk youth. Phoenix.</div><div class="rco">Phone: 602-263-5531 | 931 E. Devonshire Ave., Phoenix</div></div>
-      <div class="rc youth-rc"><div class="rn">National Runaway Safeline</div><div class="rd">24/7 support and resources for runaway youth.</div><div class="rco">Phone: 1-800-RUNAWAY (786-2929)</div></div>
-      <div class="rc youth-rc"><div class="rn">Thrive AZ</div><div class="rd">Housing and support for youth who have aged out of foster care.</div><div class="rco">thriveaz.org</div></div>
-      <div class="rc youth-rc"><div class="rn">Tumbleweed Youth Resource Centers</div><div class="rd">Ages 12–25. Daily meals, hygiene items, internet, laundry, and showers. Tempe and Phoenix.</div><div class="rco">Tempe: 480-966-2058 | Phoenix: 602-462-5611</div></div>
-    </div>
-  </div>
-</div>
-
-<div class="sec fade-in" id="c-hospital">
-  <div class="sec-header youth-hdr"><h2>Inpatient / Hospital</h2></div>
-  <div class="sec-body">
     <div class="subsec">
-      <div class="subsec-label youth-label">Child (Ages 5–13)</div>
-      <div class="rg">
-        <div class="rc youth-rc"><div class="rn">Banner Thunderbird</div><div class="rd">Inpatient psychiatric. Ages 5–12. Glendale.</div><div class="rco">Phone: 602-839-2020 | 5757 W. Thunderbird Rd., Glendale</div></div>
-        <div class="rc youth-rc"><div class="rn">Phoenix Children's Hospital (PCH)</div><div class="rd">Inpatient psychiatric. Ages 2–13. Phoenix.</div><div class="rco">Phone: 602-546-5515 | 1919 E. Thomas Rd., Phoenix</div></div>
-        <div class="rc youth-rc"><div class="rn">Phoenix St. Luke's</div><div class="rd">Inpatient psychiatric. Ages 5–17. Phoenix.</div><div class="rco">Phone: 602-251-8535 | 1800 E. Van Buren, Phoenix</div></div>
+      <div class="subsec-label" style="color: var(--housing-color);">General Referral</div>
+      <div class="rl">
+        <div class="ri housing-ri">
+          <div class="ri-left">
+            <div class="ri-name">Arizona 211</div>
+            <div class="ri-desc">Statewide resource and referral line. Connects callers to housing, shelter, food, utilities, mental health, and other community services. Updated regularly — often the fastest way to find current shelter availability.</div>
+          </div>
+          <div class="ri-contact">2-1-1 or 877-211-8661<br><span style="font-weight:400;font-size:0.73rem;">Available 24/7</span></div>
+        </div>
       </div>
     </div>
+
     <div class="subsec">
-      <div class="subsec-label youth-label">Adolescent (Ages 12–17)</div>
-      <div class="rg">
-        <div class="rc youth-rc"><div class="rn">Agave Ridge</div><div class="rd">Inpatient psychiatric. Ages 12–17. Mesa.</div><div class="rco">Phone: 480-648-1011 | 3322 S. Ellsworth Rd., Mesa</div></div>
-        <div class="rc youth-rc"><div class="rn">Aurora BH (East &amp; West)</div><div class="rd">Inpatient psychiatric and detox. Ages 12–17. Tempe and Glendale.</div><div class="rco">Phone: 480-345-5420</div></div>
-        <div class="rc youth-rc"><div class="rn">Aurora BH Special Needs Unit</div><div class="rd">Inpatient for special needs and autism. Ages 8–17. Mercy Care and Cigna. Tempe.</div><div class="rco">Phone: 480-345-5400 | 6350 S. Maple Ave., Tempe</div></div>
-        <div class="rc youth-rc"><div class="rn">Destiny Springs</div><div class="rd">Inpatient psychiatric. Ages 11–17. Surprise.</div><div class="rco">Phone: 623-233-3000 | 17300 N. Dysart Rd., Surprise</div></div>
-        <div class="rc youth-rc"><div class="rn">Oasis Behavioral Health</div><div class="rd">Inpatient psychiatric and detox. Ages 11–17. Chandler.</div><div class="rco">Phone: 480-281-5055 | 2190 N. Grace Blvd., Chandler</div></div>
-        <div class="rc youth-rc"><div class="rn">Valleywise BH</div><div class="rd">Inpatient psychiatric. Ages 13–17. Mesa.</div><div class="rco">Phone: 480-344-2195 | 570 W. Brown Rd., Mesa</div></div>
-        <div class="rc youth-rc"><div class="rn">Via Linda BH</div><div class="rd">Inpatient psychiatric. Ages 12–17. Scottsdale.</div><div class="rco">Phone: 480-476-7010 | 9160 E. Horseshoe Rd., Scottsdale</div></div>
+      <div class="subsec-label" style="color: var(--housing-color);">Emergency Shelter</div>
+      <div class="rl">
+        <div class="ri housing-ri">
+          <div class="ri-left">
+            <div class="ri-name">Central Arizona Shelter Services (CASS)</div>
+            <div class="ri-desc">Emergency shelter and supportive services for adults experiencing homelessness. Includes case management and housing navigation. Phoenix.</div>
+          </div>
+          <div class="ri-contact">602-256-6945</div>
+        </div>
+        <div class="ri housing-ri">
+          <div class="ri-left">
+            <div class="ri-name">UMOM New Day Centers</div>
+            <div class="ri-desc">Emergency shelter and transitional housing for families and individuals. Housing stability programs and case management available. Phoenix.</div>
+          </div>
+          <div class="ri-contact">602-275-7852<br><span style="font-weight:400;font-size:0.73rem;">umom.org</span></div>
+        </div>
       </div>
     </div>
+
     <div class="subsec">
-      <div class="subsec-label youth-label">Walk-In Observation (Ages 3+)</div>
-      <div class="rg">
-        <div class="rc youth-rc"><div class="rn">Mind 24-7</div><div class="rd">23-hour observation, 24/7 walk-in. Ages 3+. Mesa, Phoenix North-Central, and Phoenix Camelback.</div><div class="rco">Phone: 844-646-3247 | mind24-7.com</div></div>
+      <div class="subsec-label" style="color: var(--housing-color);">Recovery-Linked Housing</div>
+      <div class="rl">
+        <div class="ri housing-ri">
+          <div class="ri-left">
+            <div class="ri-name">RI International — Recovery-Linked Housing Services</div>
+            <div class="ri-desc">Housing support connected to peer-based behavioral health and recovery services. Assists individuals transitioning from crisis stabilization into stable housing. Also listed in the Crisis Stabilization section above.</div>
+          </div>
+          <div class="ri-contact">602-636-4605</div>
+        </div>
+        <div class="ri housing-ri">
+          <div class="ri-left">
+            <div class="ri-name">Native American Connections — Housing &amp; Recovery Services</div>
+            <div class="ri-desc">Transitional and affordable housing with integrated recovery and behavioral health support. Culturally tailored for Native American individuals and families. Also listed in the Tribal &amp; Native American section above.</div>
+          </div>
+          <div class="ri-contact">602-254-3247<br><span style="font-weight:400;font-size:0.73rem;">nativeconnections.org</span></div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
-<div class="sec fade-in" id="c-iop">
-  <div class="sec-header youth-hdr"><h2>IOP &amp; Step-Down</h2></div>
-  <div class="sec-body">
-    <div class="rg">
-      <div class="rc youth-rc"><div class="rn">Adolescent Substance Abuse Program (ASAP)</div><div class="rd">Substance abuse IOP. Ages 12–18. East Valley, West Valley, Phoenix, and Scottsdale. AHCCCS and private insurance.</div><div class="rco">Phone: 602-434-0249 | asapaz.com</div></div>
-      <div class="rc youth-rc"><div class="rn">Aurora BH IOP</div><div class="rd">Adolescent IOP programs. Peoria and Tempe.</div><div class="rco">Phone: 623-344-4444</div></div>
-      <div class="rc youth-rc"><div class="rn">Charlie Health</div><div class="rd">Virtual IOP, ages 11–33. AHCCCS and most commercial plans. LGBTQ+, BIPOC, military, and Spanish-language programs. No waitlist.</div><div class="rco">charliehealth.com</div></div>
-      <div class="rc youth-rc"><div class="rn">Doorways Arizona</div><div class="rd">IOP, eating disorders, and mental health. Phoenix.</div><div class="rco">Phone: 602-997-2880 | 4747 N. 7th St., Ste 450, Phoenix</div></div>
-      <div class="rc youth-rc"><div class="rn">Touchstone Health Services</div><div class="rd">IOP and respite services for youth. Phoenix.</div><div class="rco">Phone: 866-207-3882 | 15648 N. 35th Ave., Phoenix</div></div>
-      <div class="rc youth-rc"><div class="rn">Youth Evaluation &amp; Treatment Centers (YETC)</div><div class="rd">Behavioral health, addiction, EMDR, DBT, autism, and eating disorders. AHCCCS and sliding scale. Walk-in Tue/Thu 8:30am–12:30pm. Phoenix.</div><div class="rco">Phone: 877-688-0734 | 4414 N. 19th Ave., Phoenix</div></div>
+    <div class="subsec">
+      <div class="subsec-label" style="color: var(--housing-color);">AHCCCS Housing Program</div>
+      <div class="alert-note">
+        <strong>AHCCCS Housing &amp; Health Opportunities (H2O):</strong> Eligible AHCCCS members with an SMI designation may access housing services through the H2O Demonstration program, administered by Solari Inc. Applications are submitted through your behavioral health provider. Contact your case manager or clinical team to determine eligibility and initiate a referral.
+      </div>
     </div>
-  </div>
-</div>
 
-<div class="sec fade-in" id="c-lgbtq">
-  <div class="sec-header youth-hdr"><h2>LGBTQ+</h2></div>
-  <div class="sec-body">
-    <div class="rg">
-      <div class="rc youth-rc"><div class="rn">Equality Arizona</div><div class="rd">LGBTQ+ rights and advocacy. Phoenix.</div><div class="rco">Phone: 480-401-2372 | equalityarizona.org</div></div>
-      <div class="rc youth-rc"><div class="rn">One-n-Ten</div><div class="rd">Drop-in services, support groups, and case management for LGBTQ+ youth ages 14–24. Phoenix.</div><div class="rco">Phone: 602-400-2601 | onenten.org</div></div>
-      <div class="rc youth-rc"><div class="rn">PFLAG Phoenix</div><div class="rd">Support for LGBTQ+ youth and their families.</div><div class="rco">Phone: 602-843-1404 | pflagphoenix.org</div></div>
-      <div class="rc youth-rc"><div class="rn">TransYouth Family Allies</div><div class="rd">Support and resources for transgender youth and their families.</div><div class="rco">Phone: 888-462-8932 | imatyfa.org</div></div>
-      <div class="rc youth-rc"><div class="rn">Trevor Project</div><div class="rd">24/7 crisis support for LGBTQ+ youth.</div><div class="rco">Phone: 866-488-7386 | thetrevorproject.org</div></div>
-    </div>
-  </div>
-</div>
-
-<div class="sec fade-in" id="c-safety">
-  <div class="sec-header youth-hdr"><h2>Abuse &amp; Safety</h2></div>
-  <div class="sec-body">
-    <div class="rg">
-      <div class="rc youth-rc"><div class="rn">AZ Department of Child Safety</div><div class="rd">Report child abuse or neglect. 24/7 hotline.</div><div class="rco">Phone: 1-888-SOS-CHILD (767-2445) | dcs.az.gov</div></div>
-      <div class="rc youth-rc"><div class="rn">AZCA Trauma Specialty Services</div><div class="rd">Free services for youth, adults, and families who are victims of sexual abuse.</div><div class="rco">Phone: 602-234-3733 ext. 2673 | TSS@arizonaschildren.org</div></div>
-      <div class="rc youth-rc"><div class="rn">ChildHelp</div><div class="rd">National child abuse prevention and treatment. Scottsdale headquarters.</div><div class="rco">Phone: 480-922-8212 | childhelp.org</div></div>
-      <div class="rc youth-rc"><div class="rn">Prevent Child Abuse AZ</div><div class="rd">Prevention resources and advocacy for families. Phoenix.</div><div class="rco">Phone: 602-255-5540 | pcaaz.org</div></div>
-    </div>
-  </div>
-</div>
-
-<div class="sec fade-in" id="c-selfharm">
-  <div class="sec-header youth-hdr"><h2>Self-Injury Resources</h2></div>
-  <div class="sec-body">
-    <div class="rg">
-      <div class="rc youth-rc"><div class="rn">Cornell Research Program on Self-Injury</div><div class="rd">Research-based resources and provider directory.</div><div class="rco">selfinjury.bctr.cornell.edu/resources.html</div></div>
-      <div class="rc youth-rc"><div class="rn">Crisis Text Line</div><div class="rd">Text-based crisis support, 24/7.</div><div class="rco">Text HOME to 741741</div></div>
-      <div class="rc youth-rc"><div class="rn">Equilibrium Counseling Center</div><div class="rd">Outpatient counseling for self-injury and related concerns. Mesa.</div><div class="rco">Phone: 480-405-8365 | 2444 E. Southern Ave., Mesa</div></div>
-      <div class="rc youth-rc"><div class="rn">Infinite Healing and Wellness</div><div class="rd">Outpatient provider specializing in self-harm and trauma. East Valley.</div><div class="rco">Phone: 480-448-1076</div></div>
-      <div class="rc youth-rc"><div class="rn">Self-Injury Outreach &amp; Support (SiOS)</div><div class="rd">Online resources and support for those who self-harm and their families.</div><div class="rco">sioutreach.org</div></div>
-    </div>
-  </div>
-</div>
-
-<div class="sec fade-in" id="c-substance">
-  <div class="sec-header youth-hdr"><h2>Substance Abuse</h2></div>
-  <div class="sec-body">
-    <div class="rg">
-      <div class="rc youth-rc"><div class="rn">Adolescent Substance Abuse Program (ASAP)</div><div class="rd">Outpatient substance abuse IOP. Ages 12–18. Multiple locations. AHCCCS and private insurance.</div><div class="rco">Phone: 602-434-0249 | asapaz.com</div></div>
-      <div class="rc youth-rc"><div class="rn">Alateen (Al-Anon for Teens)</div><div class="rd">Peer support for teens affected by a family member's drinking.</div><div class="rco">al-anon.org/newcomers/teen-corner-alateen</div></div>
-      <div class="rc youth-rc"><div class="rn">Not My Kid</div><div class="rd">Prevention and intervention resources for parents of youth with substance use.</div><div class="rco">Phone: 602-652-0163 | notmykid.org</div></div>
-      <div class="rc youth-rc"><div class="rn">SAMHSA National Helpline</div><div class="rd">Free, confidential 24/7 referral line for substance use and mental health.</div><div class="rco">Phone: 800-726-4727 | samhsa.gov</div></div>
-    </div>
-  </div>
-</div>
-
-<!-- ===== TRIBAL ===== -->
-<div class="pop-divider tribal fade-in"><div class="pop-line"></div><div class="pop-badge">Native American &amp; Tribal Resources</div><div class="pop-line"></div></div>
-
-<div class="sec fade-in" id="t-bh">
-  <div class="sec-header tribal-hdr"><h2>Behavioral Health</h2></div>
-  <div class="sec-body">
-    <div class="rg">
-      <div class="rc tribal-rc"><div class="rn">Desert Visions Youth Wellness Center</div><div class="rd">IHS-funded substance abuse and mental health program for Native youth. Sacaton (Gila River Indian Community).</div><div class="rco">Phone: 888-431-4096 | 198 S. Skill Center Rd., Sacaton</div></div>
-      <div class="rc tribal-rc"><div class="rn">Native American Connections</div><div class="rd">Culturally tailored behavioral health, substance abuse, housing, and residential programs. Phoenix.</div><div class="rco">Phone: 602-254-3247 | 4520 N. Central Ave., Phoenix | nativeconnections.org</div></div>
-      <div class="rc tribal-rc"><div class="rn">Native Health (Phoenix)</div><div class="rd">Behavioral health, anger management, and medical services for urban Native Americans. Phoenix.</div><div class="rco">Phone: 602-279-5262 | nativehealthphoenix.org</div></div>
-      <div class="rc tribal-rc"><div class="rn">Phoenix Indian Medical Center (PIMC)</div><div class="rd">IHS facility offering behavioral health services including DBT for eligible Native Americans. Phoenix.</div><div class="rco">Phone: 602-263-1518 | 4212 N. 16th St., Phoenix</div></div>
-      <div class="rc tribal-rc"><div class="rn">Salt River Pima-Maricopa Indian Community BH</div><div class="rd">Behavioral health services for Salt River tribal members and employees.</div><div class="rco">Phone: 480-850-4133</div></div>
-    </div>
-  </div>
-</div>
-
-<div class="sec fade-in" id="t-housing">
-  <div class="sec-header tribal-hdr"><h2>Housing</h2></div>
-  <div class="sec-body">
-    <div class="rg">
-      <div class="rc tribal-rc"><div class="rn">American Indian Health — AHCCCS Transport</div><div class="rd">Non-emergency medical transportation for American Indian AHCCCS members.</div><div class="rco">Phone: 602-263-1503</div></div>
-      <div class="rc tribal-rc"><div class="rn">Native American Connections Housing</div><div class="rd">Transitional and affordable housing for Native Americans. Phoenix.</div><div class="rco">Phone: 602-254-3247 | 4520 N. Central Ave., Ste 600, Phoenix</div></div>
-    </div>
-  </div>
-</div>
-
-<div class="sec fade-in" id="t-legal">
-  <div class="sec-header tribal-hdr"><h2>Legal &amp; Advocacy</h2></div>
-  <div class="sec-body">
-    <div class="rg">
-      <div class="rc tribal-rc"><div class="rn">Inter Tribal Council of Arizona (ITCA)</div><div class="rd">Statewide consortium of 21 federally recognized tribes. Provides advocacy, referrals, and coordination of services for tribal members across Arizona.</div><div class="rco">Phone: 602-258-4822 | itcaonline.com | 2214 N. Central Ave., Phoenix</div></div>
-    </div>
-  </div>
-</div>
-
-<div class="sec fade-in" id="t-medical">
-  <div class="sec-header tribal-hdr"><h2>Medical</h2></div>
-  <div class="sec-body">
-    <div class="rg">
-      <div class="rc tribal-rc"><div class="rn">Carl T. Hayden VA Medical Center</div><div class="rd">VA hospital for eligible Native American veterans. Phoenix.</div><div class="rco">Phone: 602-277-5551 | 650 E. Indian School Rd., Phoenix</div></div>
-      <div class="rc tribal-rc"><div class="rn">Native Health — Medical Clinic</div><div class="rd">Primary care and behavioral health for urban Native Americans. Phoenix.</div><div class="rco">Phone: 602-279-5262 | nativehealthphoenix.org</div></div>
-      <div class="rc tribal-rc"><div class="rn">Phoenix Indian Medical Center (PIMC)</div><div class="rd">Full-service IHS hospital. Medical, behavioral health, and dental for eligible Native Americans. Phoenix.</div><div class="rco">Phone: 602-263-1200 | 4212 N. 16th St., Phoenix | ihs.gov/phoenix</div></div>
-    </div>
-  </div>
-</div>
-
-<div class="sec fade-in" id="t-substance">
-  <div class="sec-header tribal-hdr"><h2>Substance Abuse</h2></div>
-  <div class="sec-body">
-    <div class="rg">
-      <div class="rc tribal-rc"><div class="rn">CBI — Opioid Treatment (Pinal Co. / Casa Grande)</div><div class="rd">Opioid treatment with SABG funding. Serves rural Native communities in Pinal County.</div><div class="rco">Phone: 520-426-0088 | 675 E. Cottonwood Ln., Casa Grande</div></div>
-      <div class="rc tribal-rc"><div class="rn">Desert Visions Youth Wellness Center</div><div class="rd">IHS-funded adolescent substance abuse and mental health treatment. Sacaton.</div><div class="rco">Phone: 888-431-4096 | Sacaton, AZ (Gila River Indian Community)</div></div>
-      <div class="rc tribal-rc"><div class="rn">Native American Connections — Residential</div><div class="rd">Residential substance abuse treatment with culturally tailored programming. AHCCCS. Phoenix.</div><div class="rco">Phone: 602-424-2060 | 4520 N. Central Ave., Phoenix</div></div>
-      <div class="rc tribal-rc"><div class="rn">PIMC Behavioral Health — Substance Programs</div><div class="rd">Substance abuse evaluation and treatment integrated within IHS behavioral health. Phoenix.</div><div class="rco">Phone: 602-263-1518 | 4212 N. 16th St., Phoenix</div></div>
-    </div>
   </div>
 </div>
 
 </main>
-
-<!-- BACK TO TOP -->
-<a href="#" class="back-to-top" id="backToTop" aria-label="Back to top">↑</a>
 
 <!-- FOOTER -->
 <footer>
@@ -1235,57 +1212,17 @@ footer { background: var(--footer-bg); color: white; padding: 2rem 0 1rem; font-
 </footer>
 
 <script>
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const href = a.getAttribute('href');
-    if (href === '#') { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
-    e.preventDefault();
-    const t = document.querySelector(href);
-    if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-});
-
-// Fade-in on scroll
-const obs = new IntersectionObserver(
-  es => es.forEach(e => e.isIntersecting && e.target.classList.add('visible')),
-  { threshold: 0.06, rootMargin: '0px 0px -30px 0px' }
-);
+document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+  const href = a.getAttribute('href');
+  if (href === '#') return;
+  e.preventDefault();
+  const t = document.querySelector(href);
+  if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}));
+const obs = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) e.target.classList.add('visible');
+}), { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-
-// Back to top button
-const btt = document.getElementById('backToTop');
-window.addEventListener('scroll', () => {
-  btt.classList.toggle('visible', window.scrollY > 400);
-}, { passive: true });
-
-// Mobile nav
-function toggleNav() {
-  const nav = document.getElementById('mobileNav');
-  const overlay = document.querySelector('.nav-overlay');
-  const hamburger = document.getElementById('hamburger');
-  const open = nav.classList.toggle('open');
-  overlay.classList.toggle('open', open);
-  hamburger.classList.toggle('open', open);
-  hamburger.setAttribute('aria-expanded', open);
-  document.body.style.overflow = open ? 'hidden' : '';
-}
-
-function closeNav() {
-  const nav = document.getElementById('mobileNav');
-  const overlay = document.querySelector('.nav-overlay');
-  const hamburger = document.getElementById('hamburger');
-  nav.classList.remove('open');
-  overlay.classList.remove('open');
-  hamburger.classList.remove('open');
-  hamburger.setAttribute('aria-expanded', false);
-  document.body.style.overflow = '';
-}
-
-// Close nav on resize to desktop
-window.addEventListener('resize', () => {
-  if (window.innerWidth > 768) closeNav();
-});
 </script>
 </body>
 </html>
